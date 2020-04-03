@@ -21,13 +21,13 @@ Azure Monitor can collect data directly from your Azure virtual machines into a 
 
 1.  Open the Azure Cloud Shell and run the following two commands to create a Resource Group and Azure VM that you will use to monitor:
 
-     ```powershell
+    ```powershell
     New-AzResourceGroup -Name myResourceGroup -Location EastUS
-     ```
+    ```
 
-     ```powershell
+    ```powershell
     New-AzVm -ResourceGroupName "myResourceGroup" -Name "myVM" -Location "East  US" -VirtualNetworkName "myVnet" -SubnetName "mySubnet" -SecurityGroupName   "myNetworkSecurityGroup" -PublicIpAddressName "myPublicIpAddress"     -OpenPorts 80,3389
-     ```
+    ```
 
 1.  When prompted for credentials enter **LocalAdmin** as the User and use the password **Pa55w.rd1234**
 
@@ -90,7 +90,7 @@ Azure Monitor can collect events from the Windows event logs or Linux Syslog and
 
 5.  Select **Save** at the top of the page to save the configuration.
 
-6.  Select **Windows Performance Data** to enable collection of performance counters on a Windows computer.
+6.  Select **Windows Performance Counters** to enable collection of performance counters on a Windows computer.
 
 7.  When you first configure Windows Performance counters for a new Log Analytics workspace, you are given the option to quickly create several common counters. They are listed with a checkbox next to each.
 
@@ -109,7 +109,7 @@ Now that you have enabled data collection, lets run a simple log search example 
 
 1.  In the selected workspace, from the left-hand pane, select **Logs**.
 
-2.  On the Logs query page, type `Perf` in the query editor and select **Run**.
+2.  Click Get started.  On the Logs query page, type `Perf` in the query editor and select **Run**.
 
        ![Screenshot](../Media/Module-4/556c7fd3-bb7b-4c21-af88-6a5e7a6f6964.png)
 
@@ -138,10 +138,10 @@ Application Insights can gather telemetry data from any internet-connected appli
    | Settings        | Value   | 
    | ------------- |-----|
    | **Name**      | Enter a Globally Unique Value |
-   | **Resource Group**     | mySResourceGroup |
+   | **Resource Group**     | myResourceGroup |
    | **Location** | East US |
 
-2.  Click **Create**.
+2.  Click **Add**.
 
 ### Task 2: Create an HTML file
 
@@ -159,7 +159,7 @@ Application Insights can gather telemetry data from any internet-connected appli
         var appInsights=window.appInsights||function(config)
     {
     function r(config){ t[config] = function(){ var i = arguments; t.queue.push(function(){ t[config].apply(t, i)})} }
-    var t = { config:config},u=document,e=window,o='script',s=u.createElement(o),i,f;for(s.src=config.url||'//az416426.vo.msecnd.net/scripts/a/ai.0.js',u.getElementsByTagName(o)[0].parentNode.appendChild(s),t.cookie=u.cookie,t.queue=[],i=['Event','Exception','Metric','PageView','Trace','Ajax'];i.length;)r('track'+i.pop());return r('setAuthenticatedUserContext'),r('clearAuthenticatedUserContext'),config.disableExceptionTracking||(i='onerror',r('_'+i),f=e[i],e[i]=function(config, r, u, e, o) { var s = f && f(config, r, u, e, o); return s !== !0 && t['_' + i](config, r, u, e, o),s}),t
+    var t = { config:config},u=document,e=window,o='script',s=u.createElement(o),i,f;for(s.src=config.url||'https://az416426.vo.msecnd.net/scripts/a/ai.0.js',u.getElementsByTagName(o)[0].parentNode.appendChild(s),t.cookie=u.cookie,t.queue=[],i=['Event','Exception','Metric','PageView','Trace','Ajax'];i.length;)r('track'+i.pop());return r('setAuthenticatedUserContext'),r('clearAuthenticatedUserContext'),config.disableExceptionTracking||(i='onerror',r('_'+i),f=e[i],e[i]=function(config, r, u, e, o) { var s = f && f(config, r, u, e, o); return s !== !0 && t['_' + i](config, r, u, e, o),s}),t
     }({
     instrumentationKey:'xxxxxx-xxxxxxxx-xxxxxxxx-xxxxxxxxx' // REMOVE xxxx-xxx... REPLACE WITH INSTRUMENTATIONKEY '' //
     });
@@ -180,24 +180,7 @@ Application Insights can gather telemetry data from any internet-connected appli
 
        ![Screenshot](../Media/Module-4/2af9d8f7-4b69-492e-92da-c96029cd85b0.png)
 
-2.  Add the following script to your ``hello_world.html`` before the closing ``</head>`` tag:
-
-    ```
-    <script type = 'text/javascript' >
-        var appInsights=window.appInsights||function(config)
-        {
-            function r(config){ t[config] = function(){ var i = arguments; t.queue.push(function(){ t[config].apply(t, i)})} }
-            var t = { config:config},u=document,e=window,o='script',s=u.createElement(o),i,f;for(s.src=config.url||'//az416426.vo.msecnd.net/scripts/a/ai.0.js',u.getElementsByTagName(o)[0].parentNode.appendChild(s),t.cookie=u.cookie,t.queue=[],i=['Event','Exception','Metric','PageView','Trace','Ajax'];i.length;)r('track'+i.pop());return r('setAuthenticatedUserContext'),r('clearAuthenticatedUserContext'),config.disableExceptionTracking||(i='onerror',r('_'+i),f=e[i],e[i]=function(config, r, u, e, o) { var s = f && f(config, r, u, e, o); return s !== !0 && t['_' + i](config, r, u, e, o),s}),t
-        }({
-            instrumentationKey:'INSTRUMENTATION_KEY'
-        });
-
-        window.appInsights=appInsights;
-        appInsights.trackPageView();
-    </script>
-    ```
-
-3.  Edit ``hello_world.html`` and add your instrumentation key.
+2. Edit ``hello_world.html`` and add your instrumentation key.
 
 4.  Open ``hello_world.html`` in a local browser session. This will create a single pageview. You can refresh your browser to generate multiple test page views.
 
@@ -205,7 +188,7 @@ Application Insights can gather telemetry data from any internet-connected appli
 
 1.  You can now reopen the Application Insights **Overview** page in the Azure portal, where you retrieved your instrumentation key, to view details about your currently running application. The four default charts on the overview page are scoped to server-side application data. Since we are instrumenting the client/browser-side interactions with the JavaScript SDK this particular view doesn't apply unless we also have a server-side SDK installed.
 
-2.  Click on     ![Screenshot](../Media/Module-4/9bcac7c1-ee5e-40ad-a23c-7647dc380e39.png) Application Map icon  **Analytics**.  This opens **Analytics**, which provides a rich query language for analyzing all data collected by Application Insights. To view data related to the client-side browser requests run the  following query:
+2.  Click on **Logs (Analytics)**.  This opens **Logs**, which provides a rich query language for analyzing all data collected by Application Insights. To view data related to the client-side browser requests run the following query:
 
     ```json
     // average pageView duration by name
@@ -224,7 +207,7 @@ Application Insights can gather telemetry data from any internet-connected appli
 
        ![Screenshot](../Media/Module-4/6fbf0845-41b3-4aa1-a213-9083468aacd8.png)
 
-3.  Go back to the **Overview** page. Click on **Browser** from under the **Investigate** header, then select **Performance**  Here you find metrics related to the performance of your website. There is also a corresponding view for analyzing failures and exceptions in your website. You can click **Samples** to drill into individual transaction details. From here, you can access the end-to-end transaction details.
+3.  Go back to the **Overview** page. Click on **Performance** from under the **Investigate** header.  Here you find metrics related to the performance of your website. There is also a corresponding view for analyzing failures and exceptions in your website. You can click **Samples** to drill into individual transaction details. From here, you can access the end-to-end transaction details.
 
        ![Screenshot](../Media/Module-4/3546439a-3706-4094-a776-504d5d1b11ca.png)
 
@@ -232,7 +215,7 @@ Application Insights can gather telemetry data from any internet-connected appli
 
        ![Screenshot](../Media/Module-4/104e4cf8-1be7-47dd-927b-f129976b3191.png)
     
-5.  If we had instrumented a more complex website with multiple pages, another useful tool is [**User Flows**](../../azure-monitor/app/usage-flows.md). With **User Flows** you can track the pathway visitors takes through the various parts of your website.
+5.  If we had instrumented a more complex website with multiple pages, another useful tool is [**User Flows**](https://docs.microsoft.com/en-us/azure/azure-monitor/app/usage-flows). With **User Flows** you can track the pathway visitors takes through the various parts of your website.
 
       ![Screenshot](../Media/Module-4/1ae4de4b-5128-4735-9147-7bef014540e6.png)
 

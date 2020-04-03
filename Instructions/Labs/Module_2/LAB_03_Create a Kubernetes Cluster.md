@@ -21,7 +21,7 @@ Azure Kubernetes Service (AKS) is a managed Kubernetes service that lets you qui
     az group create --name myResourceGroup --location eastus
      ```
 
-     **Note**: If you receive an error regarding the ```Microsoft.Network``` resource provider not being registered then run following command and rerun the command in Step 4. Otherwise continue to Task 2.
+     **Note**: If you receive an error regarding the ```Microsoft.Network``` resource provider not being registered then run the following command and rerun the command in Step 4. Otherwise continue to Task 2.
      
      ```cli
      az provider register --namespace 'Microsoft.Network'
@@ -43,11 +43,7 @@ Azure Kubernetes Service (AKS) is a managed Kubernetes service that lets you qui
 To manage a Kubernetes cluster, you use kubectl, the Kubernetes command-line client. If you use Azure Cloud Shell, `kubectl` is already installed.
 
 
-1.  In the **Azure Cloud Shell** enter the following commands
-
-     ```azurecli
-    az aks install-cli
-     ```
+1.  Open **Azure Cloud Shell** in Bash mode.
 
 
 1.  To configure `kubectl` to connect to your **Kubernetes cluster**, use the az-aks-get-credentials command. This command downloads credentials and configures the **Kubernetes CLI** to use them.
@@ -74,11 +70,11 @@ To manage a Kubernetes cluster, you use kubectl, the Kubernetes command-line cli
 ### Task 4: Run the application
 
 
-A Kubernetes manifest file defines a desired state for the cluster, such as what container images to run. In this lab, a manifest is used to create all objects needed to run the Azure Vote application. This manifest includes two kubernetes-deployment - one for the sample Azure Vote Python applications, and the other for a Redis instance. Two kubernetes-service are also created - an internal service for the Redis instance, and an external service to access the Azure Vote application from the internet. The manifest file has been created and saved to the godeply Github page for this lab. The file is azure-vote.yaml and can be found at **`https://raw.githubusercontent.com/MicrosoftLearning/AZ-500-Azure-Security/master/Allfiles/Labs/Mod2_Lab03/azure-vote.yaml`**
+A Kubernetes manifest file defines a desired state for the cluster, such as what container images to run. In this lab, a manifest is used to create all objects needed to run the Azure Vote application. This manifest includes two kubernetes-deployment - one for the sample Azure Vote Python applications, and the other for a Redis instance. Two kubernetes-service are also created - an internal service for the Redis instance, and an external service to access the Azure Vote application from the internet. The manifest file has been created and saved to the Godeploy Github page for this lab. The file is azure-vote.yaml and can be found at **`https://raw.githubusercontent.com/MicrosoftLearning/AZ-500-Azure-Security/master/Allfiles/Labs/Mod2_Lab03/azure-vote.yaml`**
 
 
 
-1.  Run the following command in the cloud shell, this will directly pull the yaml file needed from github to deploy the AKS application
+1.  Run the following command in the cloud shell, this will directly pull the yaml file needed from GitHub to deploy the AKS application
 
      ```cli
     kubectl apply -f https://raw.githubusercontent.com/MicrosoftLearning/AZ-500-Azure-Security/master/Allfiles/Labs/Mod2_Lab03/azure-vote.yaml
@@ -97,9 +93,6 @@ A Kubernetes manifest file defines a desired state for the cluster, such as what
 
 
 ### Task 5: Test the application
-
-
-When the application runs, a Kubernetes service exposes the application front end to the internet. This process can take a few minutes to complete.
 
 
 1.  To monitor progress, use the kubectl-get command with the `--watch` argument.
@@ -146,7 +139,7 @@ To see current status, uptime, and resource usage for the Azure Vote pods, compl
     The *azure-vote-back* and *azure-vote-front* containers are displayed
 
 
-1.  To see logs for the `azure-vote-front` pod, select the **View container logs** link on the right-hand side of the containers list. These logs include the *stdout* and *stderr* streams from the container.
+1.  To see logs for the `azure-vote-front` pod, select the **View live data (preview)** link on the right-hand side of the containers list. These logs include the *stdout* and *stderr* streams from the container.
 
 
 ### Task 7: Delete the cluster

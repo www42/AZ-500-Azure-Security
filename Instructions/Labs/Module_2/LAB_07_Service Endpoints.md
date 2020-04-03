@@ -16,7 +16,7 @@ Virtual network service endpoints enable you to limit network access to some Azu
 
 ### Task 1: Create a virtual network
 
-1.  Select **+ Create a resource** on the upper, left corner of the Azure portal.
+1.  Select **+ Create a resource** on the upper left corner of the Azure portal.
 2.  Select **Networking**, and then select **Virtual network**.
 3.  Enter, or select, the following information, and then select **Create**:
 
@@ -57,10 +57,10 @@ Service endpoints are enabled per service, per subnet. Create a subnet and enabl
 ### Task 3: Restrict network access for a subnet
 
 
-By default, all VMs in a subnet can communicate with all resources. You can limit communication to and from all resources in a subnet by creating a network security group, and associating it to the subnet.
+By default, all VMs in a subnet can communicate with all resources. You can limit communication to and from all resources in a subnet by creating a network security group and associating it to the subnet.
 
 
-1.  Select **+ Create a resource** on the upper, left corner of the Azure portal.
+1.  Select **+ Create a resource** on the upper left corner of the Azure portal.
 2.  Select **Networking**, and then select **Network security group**.
 3.  Under **Create a network security group**, enter, or select, the following information, and then select **Create**:
 
@@ -71,7 +71,7 @@ By default, all VMs in a subnet can communicate with all resources. You can limi
     |Resource group | Select **Use existing** and select *myResourceGroup*.|
     |Location| Select **East US** |
 
-4.  After the network security group is created, enter *myNsgPrivate*, in the **Search resources, services, and docs** box at the top of the portal. When **myNsgPrivate** appears in the search results, select it.
+4.  After the network security group is created, enter *myNsgPrivate* in the **Search resources, services, and docs** box at the top of the portal. When **myNsgPrivate** appears in the search results, select it.
 5.  Under **SETTINGS**, select **Outbound security rules**.
 6.  Select **+ Add**.
 7.  Create a rule that allows outbound communication to the Azure Storage service. Enter, or select, the following information, and then select **Add**:
@@ -106,16 +106,16 @@ By default, all VMs in a subnet can communicate with all resources. You can limi
 10.  Select **+ Add**.
 11.  Create an inbound security rule that allows Remote Desktop Protocol (RDP) traffic to the subnet from anywhere. The rule overrides a default security rule that denies all inbound traffic from the internet. Remote desktop connections are allowed to the subnet so that connectivity can be tested in a later step. Under **SETTINGS**, select **Inbound security rules**, select **+Add**, enter the following values, and then select **Add**:
 
-        |Setting|Value|
-        |----|----|
-        |Source| Any |
-        |Source port ranges| * |
-        |Destination | Select **VirtualNetwork**|
-        |Destination port ranges| 3389 |
-        |Protocol|Any|
-        |Action|Allow|
-        |Priority|120|
-        |Name|Allow-RDP-All|
+   |Setting|Value|
+   |----|----|
+   |Source| Any |
+   |Source port ranges| * |
+   |Destination | Select **VirtualNetwork**|
+   |Destination port ranges| 3389 |
+   |Protocol|Any|
+   |Action|Allow|
+   |Priority|120|
+   |Name|Allow-RDP-All|
 
 12.  Under **SETTINGS**, select **Subnets**.
 13.  Select **+ Associate**
@@ -129,7 +129,7 @@ The steps necessary to restrict network access to resources created through Azur
 
 
 
-1.  Select **+ Create a resource** on the upper, left corner of the Azure portal.
+1.  Select **+ Create a resource** on the upper left corner of the Azure portal.
 2.  Select **Storage**, and then select **Storage account - blob, file, table, queue**.
 3.  Enter, or select, the following information, accept the remaining defaults, and then select **Create**:
 
@@ -150,7 +150,7 @@ The steps necessary to restrict network access to resources created through Azur
        ![Screenshot](../Media/Module-2/4d7a1be1-752e-4f18-8ccb-e9ce37240ed4.png)
 
 3.  Select **+ File share**.
-4.  Enter *my-file-share* under **Name**, and then select **OK**.
+4.  Enter *my-file-share* under **Name**, and then select **Create**.
 5.  Close the **File service** box.
 
 ### Task 6: Restrict network access to a subnet
@@ -183,7 +183,7 @@ By default, storage accounts accept network connections from clients in any netw
 To test network access to a storage account, deploy a VM to each subnet.
 
 
-1.  Select **+ Create a resource** found on the upper, left corner of the Azure portal.
+1.  Select **+ Create a resource** found on the upper left corner of the Azure portal.
 2.  Select **Compute**, and then select **Virtual Machine**.
 3.  Enter, or select, the following information and then select **OK**:
 
@@ -221,7 +221,7 @@ The VM takes a few minutes to deploy. Do not continue to the next step until it 
 2.  After selecting the **Connect** button, a Remote Desktop Protocol (.rdp) file is created and downloaded to your computer.  
 3.  Open the downloaded rdp file. If prompted, select **Connect**. Enter the user name and password you specified when creating the VM. You may need to select **More choices**, then **Use a different account**, to specify the credentials you entered when you created the VM. 
 4.  Select **OK**.
-5.  You may receive a certificate warning during the sign-in process. If you receive the warning, select **Yes** or **Continue**, to proceed with the connection.
+5.  You may receive a certificate warning during the sign-in process. If you receive the warning, select **Yes** or **Continue** to proceed with the connection.
 6.  On the *myVmPrivate* VM, map the Azure file share to drive Z using PowerShell. Before running the commands that follow, replace `<storage-account-key>` and `<storage-account-name>` with values you supplied and retrieved in the **Create a storage account** task.
 
        ```powershell
@@ -238,7 +238,7 @@ The VM takes a few minutes to deploy. Do not continue to the next step until it 
        ping bing.com
        ```
 
-    You receive no replies, because the network security group associated to the *Private* subnet does not allow outbound access to the internet.
+    You receive no replies because the network security group associated to the *Private* subnet does not allow outbound access to the internet.
 
 8.  Close the remote desktop session to the *myVmPrivate* VM.
 
@@ -254,7 +254,7 @@ The VM takes a few minutes to deploy. Do not continue to the next step until it 
 
 5.  From your computer, browse to the Azure portal.
 6.  Enter the name of the storage account you created in the **Search resources, services, and docs** box. When the name of your storage account appears in the search results, select it.
-7.  Select **Files**.
+7.  Select **File shares** then select *my-file-share*.
 8.  You receive the error shown in the following screenshot:
 
       ![Screenshot](../Media/Module-2/0a8b2a45-0da2-44f0-96eb-9c7ca02b3ee9.png)

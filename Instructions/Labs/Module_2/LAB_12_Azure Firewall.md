@@ -16,10 +16,10 @@ Network traffic is subjected to the configured firewall rules when you route you
 
 ### Task 1: Lab Setup
 
-1.  Open Powershell and run the following Powershell command to open a ARM Template which will deploy resources used throughout this lab.  _If prompted select Chrome as the browser of choice._
+1.  In your browser, navigate to the following URL to open the ARM template:
 
-     ```powershell
-    start "https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FGoDeploy%2FAZ500%2Fmaster%2FAZ500%20Mod2%20Lab%207%2Ftemplate.json"
+     ```cli
+    https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FGoDeploy%2FAZ500%2Fmaster%2FAZ500%20Mod2%20Lab%207%2Ftemplate.json
      ```
  
 2.  Click **Create new** under the Resource Group and use the resource group name of **Test-FW-RG**  
@@ -169,15 +169,17 @@ For testing purposes in this tutorial, you configure the primary and secondary D
 
 2.  Click the network interface for the **Srv-Work** virtual machine.
 
-3.  Under **Settings**, click **DNS servers**.
+3.  Under **Settings**, click **Networking**.
 
-4.  Under **DNS servers**, click **Custom**.
+4.  Select the NIC
 
-5.  Type **209.244.0.3** in the **Add DNS server** text box, and **209.244.0.4** in the next text box.
+5.  Under **DNS servers**, click **Custom**.
 
-6.  Click **Save**. 
+6.  Type **209.244.0.3** in the **Add DNS server** text box, and **209.244.0.4** in the next text box.
 
-7.  Restart the **Srv-Work** virtual machine.
+7.  Click **Save**. 
+
+8.  Restart the **Srv-Work** virtual machine.
 
 ### Task 7: Test the firewall
 
@@ -192,7 +194,7 @@ In this task you will test the firewall to confirm that it works as expected.
 	-	**Username**: localadmin
     -	**Password**: Pa55w.rd1234
 </br>
-3.  Open Internet Explorer and browse to **`https://msn.com`**
+3.  Open Internet Explorer and browse to **`https://www.msn.com`**
 
 4.  Click **OK** > **Close** on the security alerts.
 

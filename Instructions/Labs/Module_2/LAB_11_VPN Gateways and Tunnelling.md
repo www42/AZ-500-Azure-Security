@@ -5,14 +5,14 @@
 ### Task 1: Deploy a Virtual Appliance.
 
 
-In this task you will create a Sophos XG Virtual Appliance which will emulate an on-premises device.  The layout of this is depicted in the digaram below
+In this task you will create a Sophos XG Virtual Appliance which will emulate an on-premises device.  The layout of this is depicted in the diagaram below
 
    ![Screenshot](../Media/Module-2/f8a9af0a-6330-47bd-8476-3c492bc41135.png)
 
-1.  Open PowerShell and run the following command.
+1.  In your browser, navigate to the following URL to open the ARM template:
 
-     ```powershell
-    start "https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FGoDeploy%2FAZ300%2Fmaster%2Fxg-azure-master%2FmainTemplate.json"
+     ```cli
+    https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FGoDeploy%2FAZ300%2Fmaster%2Fxg-azure-master%2FmainTemplate.json
      ```
  
 2.  Login to the portal if required.
@@ -32,7 +32,7 @@ In this task you will create a Sophos XG Virtual Appliance which will emulate an
 ### Task 2: Create a Resource Group and VNet.
 
 
-In this task you will create a Virtual Machine and a Virtual Network inside a new Resource group which will be use to connect to your emulated On-Prem environment.
+In this task you will create a Virtual Machine and a Virtual Network inside a new Resource group which will be used to connect to your emulated On-Prem environment.
 
 
 1.  Login to your Azure Portal **`https://portal.azure.com`**
@@ -55,7 +55,7 @@ In this task you will create a Virtual Machine and a Virtual Network inside a ne
 ### Task 2: Create a Gateway Subnet and a Virtual network Gateway.
 
 
-In this tak you will Create a Gateway Subnet and a Virtual network Gateway which will enable you to create a connection between On-Prem and your Azure VNet.
+In this task you will Create a Gateway Subnet and a Virtual network Gateway which will enable you to create a connection between On-Prem and your Azure VNet.
 
 
 
@@ -69,7 +69,7 @@ In this tak you will Create a Gateway Subnet and a Virtual network Gateway which
 
 1.  Click **+ Gateway subnet**.  
 
-    **Note:** You need to create a Gateway subnet in order for the Gateway machines to reside in.  All the routing is done by the Azure Software Defined Networking.
+    **Note:** You need to create a Gateway subnet for the Gateway machines to reside in.  All the routing is done by the Azure Software Defined Networking.
 
 
 1.  Leave the default options on the **Add subnet** blade and click **OK**.
@@ -95,7 +95,7 @@ In this tak you will Create a Gateway Subnet and a Virtual network Gateway which
 
 1.  Click **Review + create** then on the summary screen click **Create**
 
-**Note:**  The gateway may take upto 45 minutes to deploy, although. in most cases it is much quicker.  Monitor this by clicking on the Bell Icon. You can continue to the next task whilst the Gateway is deploying.
+**Note:**  The gateway may take up to 45 minutes to deploy, although in most cases it is much quicker.  Monitor this by clicking on the Bell Icon. You can continue to the next task whilst the Gateway is deploying.
 
 
 ### Task 3: Configure the Sophos virtual appliance.
@@ -133,7 +133,7 @@ In this tak you will Create a Gateway Subnet and a Virtual network Gateway which
 
 1.  Return back to the Azure Portal.  Open the **S2S_RG** Resource Group and select the **S2S-GW-PIP** Public IP and make a note of it.
 
-    **Note**: This is your Public IP you will connect your Sophos virtual appliance to via IPSec VPN.
+    **Note**: This is your Public IP you will connect your Sophos virtual appliance to via IPSec VPN.  If the IP Address field is empty, continue to wait for the template deployment to complete, periodically checking the deployment status and refreshing the **S2S-GW-PIP** blade.
 
 
      ![Screenshot](../Media/Module-2/ab38c94f-e802-467c-9621-05a55f61438e.png)
@@ -179,7 +179,7 @@ In this tak you will Create a Gateway Subnet and a Virtual network Gateway which
       - **Remote Subnet**: Enter the remote subnet 172.17.0.0 /16 (255.255.0.0)
 </br>
 
-        ![Screenshot](../Media/Module-2/c05b0d45-3c99-43d1-a535-c2da85bb4474.png)
+![Screenshot](../Media/Module-2/c05b0d45-3c99-43d1-a535-c2da85bb4474.png)
 
 1.  **Advanced**: leave the default settings.
 

@@ -98,7 +98,7 @@ Security Center automatically collects, analyzes, and integrates log data from y
 
        ![Screenshot](../Media/Module-4/f486410b-6664-48dd-b3ed-5a5b4e7bcbdb.png)
 
-### Task 2: Respond to recommndations
+### Task 2: Respond to recommendations
 
 1.  In the Azure Security Center click **Overview**.
 
@@ -106,7 +106,7 @@ Security Center automatically collects, analyzes, and integrates log data from y
 
      ![Screenshot](../Media/Module-4/163f286f-740d-48a6-901b-e6693bec8f89.png)
 
-1.  Review the recommndations.
+1.  Review the recommendations.
 
        ![Screenshot](../Media/Module-4/686a999a-0ab5-4449-8087-a6cf16a455b4.png)
 

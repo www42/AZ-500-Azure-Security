@@ -17,7 +17,7 @@ In this lab, you will:
 
 2.  In the search bar type **Event Hubs** and select **Event Hubs**
 
-3.  Click **add** to add a new Event Hubs Namespace
+3.  Click **+ Add** to add a new Event Hubs Namespace
 
     - Populate the fields with the following details:
 
@@ -28,7 +28,7 @@ In this lab, you will:
        - **Location**: East US
        - **Throughput Units**: 2
 
-4.  Click **create**
+4.  Click **Create**
 
 ### Task 2: Create a storage account for later user
 
@@ -49,16 +49,16 @@ In this lab, you will:
       - **Replication**: Locally-redundent storage (LRS)
       - **Access tier**: Hot
 
-5.  Click **review+create** then click **create**
+5.  Click **Review + Create** then click **Create**
 
-6.  Wait for the storage account to **create**
+6.  Wait for the storage account to create.
 7.  Return to storage accounts
-8.  select the storage account you created
-9.  in the overview pane click **Blobs**
-10.  Click **+Container**
+8.  Select the storage account you created
+9.  In the overview pane click **Containers**
+10.  Click **+ Container**
 11.  For the name type **events**
-12.  set the **Public Access Level to Container**
-13.  Click OK
+12.  Set the **Public Access Level** to **Container**
+13.  Click **OK**
 
 ### Task 3: Create new event hub
 
@@ -66,24 +66,24 @@ In this lab, you will:
 
 2.  In the event hub namespace click **Event Hubs** underneath Entities in the selection pane
 
-3.  Click **+Event Hub**
+3.  Click **+ Event Hub**
 
 4.  Enter the name of "events"
 
-5.  Click **on** underneath **capture**
+5.  Click **On** underneath **Capture**
 
     **Note**: This will turn on the dumping of events to the Blob store we created erlier
 
 
-6.  Click Select **Container**
+6.  Click **Select Container**
 
-7.  Select the **storage account name you created erlier**
+7.  Select the **Storage account** name you created earlier
 
-8.  Select the **blob storage name you created erlier**
+8.  Select the **Blob storage (Container)** name you created earlier
 
-9.  click **select**
+9.  Click **Select**
 
-10.  Click **create**
+10.  Click **Create**
 
 ### Task 4: Collect data to be able to send events into event hubs
 
@@ -108,9 +108,9 @@ We will now download the scripts that will be used to create some events to be s
 
 1.  Open **PowerShell as administrator** (right click on the PowerShell icaon) and run the following command
 
-     ```powershell
+    ```powershell
     install-script get-blobevents, send-blobevents
-     ```
+    ```
 
 **Note**: If prompted confirm the installation. The script files have now been downloaded and are available for use in PowerShell
 
@@ -125,9 +125,9 @@ For this section you will need the primary key copied from the portal erlier
 
 2.  Run the following command 
 
-     ```powershell
+    ```powershell
     send-blobevents
-     ```
+    ```
 
 3.  This command will prompt you to enter the following data:
 
@@ -166,10 +166,10 @@ If you recieve a series if **401 Unauthorised errors** from the script check the
 
 1.  Launch **PowerShell**
 
-2.  run **get-blobevents** and enter the following when prompted:
+2.  Run **`get-blobevents`** and enter the following when prompted:
 
-  - **blobName**: Name of the storage account
-  - **containterName**: Name of the Blob container where the events are stored
+    - **blobName**: Name of the storage account
+    - **containterName**: Name of the Blob container where the events are stored
 </br>
 
 **Note**: You can see this information in your storage account. The script will make a REST query to the Blob storage to list out all the .avro event that are in the storage Blob
