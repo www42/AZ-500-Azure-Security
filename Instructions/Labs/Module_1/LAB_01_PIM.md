@@ -127,33 +127,29 @@ In the following task you will make  a user eligible for an Azure AD directory r
      ![Screenshot](../Media/Module-1/dde2c301-2f2e-4318-a96a-a17f3ac3b27a.png)
 
 
-1.  Click **Add member** to open Add managed members.
+1.  Click **Add assignments** to open Add managed members.
 
-     ![Screenshot](../Media/Module-1/12749cdd-3fcc-46c7-a544-07aabbdd84d1.png)
+     ![Screenshot](../Media/Module-1/2020-05-04_06-11-59.png)
 
-1.  Click **Select a role**, and click **Billing Administrator** and then click  **Select**.
+1.  Click the **Select role** dropdown and select **Billing Administrator**.
 
-     ![Screenshot](../Media/Module-1/2020-02-24_13-50-38.png)
+     ![Screenshot](../Media/Module-1/2020-05-04_06-15-51.png)
 
-1.  Click **Select a member**, select **Isabella** and then click **Select**.
+1.  Click **No member selected**, select **Isabella** and then click **Select**.
 
-     ![Screenshot](../Media/Module-1/923c874d-67ca-4753-9831-c801ab596ad8.png)
+     ![Screenshot](../Media/Module-1/2020-05-04_06-19-28.png)
 
-1.  On the Membership settings blade, click **Save**.
+1.  On the Add assignments blade, click **Next**.
 
-     ![Screenshot](../Media/Module-1/2020-02-24_13-52-53.png)
+2.  Click **Assign** to add the user to the role.
 
-1.  On the New assignment blade, click **Add**  to add the user to the role.
+3. Select the **Billing Administrator** role.
 
-     ![Screenshot](../Media/Module-1/2020-02-24_13-54-02.png)
-
-1. Select the **Billing Administrator** role.
-
-1.  Review the added assignment.
+4.  Review the added assignment.
 
      ![Screenshot](../Media/Module-1/2020-02-24_14-12-12.png)
 
-1.  When the role is assigned, the user you selected will appear in the members list as **Eligible** for the role.
+5.  When the role is assigned, the user you selected will appear in the members list as **Eligible** for the role.
 
 
 
@@ -174,7 +170,7 @@ When you need to take on an Azure AD directory role, you can request activation 
 
      ![Screenshot](../Media/Module-1/9914545c-313f-4c9a-84a5-d7c383c7ee37.png)
 
-1.  Click **Quick start** and click **Activate your role**.
+1.  On the **Quick start** blade click **Activate your role**.
 
      ![Screenshot](../Media/Module-1/112e5790-84b1-4125-8c5c-be97033c7acc.png)
 
@@ -237,9 +233,8 @@ If you complete your administrator tasks early, you can also deactivate a role m
 
 1.  Click **Deactivate** again.
 
-     ![Screenshot](../Media/Module-1/3ce7cc8a-8ac1-4f07-96e3-ba06a7fc5c3d.png)
+     ![Screenshot](../Media/Module-1/2020-05-04_06-32-53.png)
 
-1.  Click **Yes** to confirm.
 
 
 ### Task 4: Cancel a pending request
@@ -252,7 +247,7 @@ If you do not require activation of a role that requires approval, you can cance
 
 1.  Click **Azure AD roles**.
 
-1.  Click **My requests**.
+1.  Click **Pending requests**.
 
 1.  For the role that you want to cancel, click the **Cancel** button.
 
@@ -289,7 +284,9 @@ Role assignments become "stale" when users have privileged access that they don'
  
 1.  Once the review has completed and has a status of Active, click on the **Global Admin Review**.
 
-1.  Select **Results** and see the outcome of **Not reviewed**.
+    **Note**: You may have to refresh your browser.
+
+2.  Select **Results** and see the outcome of **Not reviewed**.
 
      ![Screenshot](../Media/Module-1/04c32a26-be67-48dd-bf3d-7b60e81e2fff.png)
 
@@ -305,7 +302,7 @@ When you approve or deny access, you're just telling the reviewer whether you st
 
      ![Screenshot](../Media/Module-1/3f5a8e6a-05a7-4cc0-96ea-d1a10d23c38f.png)
 
-3.  Unless you created the review, you appear as the only user in the review. Select the check mark next to your name.
+3.  Since you created the review, you appear as the only user in the review. Select the check mark next to your name.
 
      ![Screenshot](../Media/Module-1/081d9886-8482-4d62-827c-68eb380c00a0.png)
 
@@ -346,10 +343,12 @@ You can customize some of the security alerts in PIM to work with your environme
 
 1.  Click **Azure AD roles**.
 
-1.  Click **Settings** and then **Alerts**.
+1.  Click **Alerts** and then **Setting**.
+
+     ![Screenshot](../Media/Module-1/2020-05-04_06-36-31.png)
 
 
-1.  Click an alert name to see the settings for the preconfigured alerts.
+2.  Click an alert name to see the settings for the preconfigured alerts.
 
 
 ## Exercise 5 - PIM Resource Workflows
@@ -360,13 +359,18 @@ You can customize some of the security alerts in PIM to work with your environme
 
 1.  Click **Azure AD roles**.
 
-1.  Click **Settings** 
-
 1.  Click **Roles** and select **Global Administrator**.
 
-1.  Scroll down and select **Require Approval** and  select your account as the approver then click **Update**.
+1.  Click on **Role settings**.
 
-     ![Screenshot](../Media/Module-1/2020-02-24_15-14-41.png)
+1.  On the **Role setting** blade, click on **Edit**.
+
+1.  Scroll down and select **Require Approval** and  select your account as the approver then click **Select**.
+
+1.  On the **Edit role setting – Global Administrator blade**, click **Update**.
+
+  ![Screenshot](../Media/Module-1/2020-02-24_15-14-41.png)
+
 
 ### Task 2: Enable Isabella for Global Administrator privileges.
 
@@ -374,14 +378,13 @@ You can customize some of the security alerts in PIM to work with your environme
 
 1.  Click **Azure AD roles**.
 
-1.  Click the **Quick Start** and select **Assign eligibility**.
+1.  On the **Quick Start** blade, select **Assign eligibility**.
 
      ![Screenshot](../Media/Module-1/ae3755ac-bd82-4e70-a102-ccbfc3aee48f.png)
 
-1.  Select **Global Administrator** and click **Edit**.
+1.  Select **Global Administrator** and click **+ Add assignments**.
 
-
-1.  Select **+ Add Member** and select **Isabella**.
+1.  On the **Add assignments** blade, under **Select member(s) *** click **No member selected**, select **Isabella** and click **Select** > **Next** and then **Assign**.
 
 
 1.  Open an in Private Browsing session and login to portal.azure.com as Isabella.
@@ -452,7 +455,11 @@ Follow these steps to view the audit history for Azure AD roles.
 
 1.  Click **Azure AD roles**.
 
-1.  Click **Resource audit**.
+1.  Click  to see the charts available.
+
+    ![Screenshot](../Media/Module-1/2020-05-04_06-39-01.png)
+
+2.  Click **Resource audit**.
 
     Depending on your audit history, a column chart is displayed along with the total activations, max activations per day, and average activations per day.
 
@@ -468,7 +475,7 @@ Follow these steps to view the audit history for Azure AD roles.
     | Reasoning | Text that was entered into the reason field during activation. |
     | Expiration | When an activated role expires. Applies only to eligible role assignments. |
 
-1.  To sort the audit history, click the **Time**, **Action**, and **Role** buttons.
+3.  To sort the audit history, click the **Time**, **Action**, and **Role** buttons.
 
 ### Task 2: Filter audit history
 

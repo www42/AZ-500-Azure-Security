@@ -13,31 +13,35 @@ Follow these steps to create a new security playbook in Azure Sentinel:
 
 1.  Open **Azure Sentinel** dashboard.
 
-2. Under **Management**, select **Playbooks**.
+2. Under **Configuration**, select **Playbooks**.
 
    ![Screenshot](../Media/Module-4/playbookimg.png)
 
-3. In the **Azure Sentinel - Playbooks (Preview)** page, click **Add** button.
+3. In the **Azure Sentinel - Playbooks** page, click **+ Add Playbook** button.
 
-   ![Screenshot](../Media/Module-4/create-playbook.png) 
+   ![Screenshot](../Media/Module-4/2020-05-24_08-22-31.png) 
 
-4. In the **Create Logic app** page, type the requested information to create your new logic app, and click **Create**. 
+4. In the **Create Logic app** page, type the requested information to create your new logic app, and click **Review + create** then click **Create**. 
+
+1. Once created click **Go to resource**.
 
 5. In the **Logic App Designer** select the template you want to use. If you select a template that necessitates credentials, you will have to provide them. Alternatively, you can create a new blank playbook from scratch. Select **Blank Logic App**. 
 
    ![Screenshot](../Media/Module-4/playbook-template.png)
 
-6. You are taken to the Logic App Designer where you can either build new or edit the template. For more information on creating a playbook with Logic Apps].
+6. You are taken to the Logic App Designer where you can either build new or edit the template.
 
 7. If you are creating a blank playbook, in the **Search all connectors and triggers** field, type *Azure Sentinel*, and select **When a response to an Azure Sentinel alert is triggered**. 
+
+   **Note**: You may be required to re-authenticate. If so, click **Sign in** and authenticate with your Azure credentials.
    
-   After it is created, the new playbook appears in the **Playbooks** list. If it doesn’t appear, click **Refresh**.
+8. Click **Save** and return to the Azure Sentinel blade.  After it is created, the new playbook appears in the **Playbooks** list. If it doesn’t appear, click **Refresh**.
 
-8.  Use the **Get entities** functions, which enable you to get the relevant entities from inside the **Entities** list, such as accounts, IP addresses and hosts. This will enable you to run actions on specific entities.
+9.  Use the **Get entities** functions, which enable you to get the relevant entities from inside the **Entities** list, such as accounts, IP addresses and hosts. This will enable you to run actions on specific entities.
 
-9.  Now you can define what happens when you trigger the playbook. You can add an action, logical condition, switch case conditions, or loops.
+10.  Now you can define what happens when you trigger the playbook. You can add an action, logical condition, switch case conditions, or loops.
 
-    !![Screenshot](../Media/Module-4/logic-app.png)
+  ![Screenshot](https://raw.githubusercontent.com/MicrosoftLearning/AZ-500-Azure-Security/master/Instructions/Labs/Media/Module-4/logic-app.png)
 
 ### Task 2: How to run a security playbook
 
@@ -45,7 +49,7 @@ You can run a playbook on demand.
 
 To run a playbook on-demand:
 
-1. In the **incidents** page, select an incident and click on **View full details**.
+1. In the **Incidents** page, select an incident and click on **View full details**.
 
 2. In the **Alerts** tab, click on the alert you want to run the playbook on, and scroll all the way to the right and click **View playbooks** and select a playbook to **run** from the list of available playbooks on the subscription. 
 

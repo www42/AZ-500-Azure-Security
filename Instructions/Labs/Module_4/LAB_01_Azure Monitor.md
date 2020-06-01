@@ -37,19 +37,25 @@ Azure Monitor can collect data directly from your Azure virtual machines into a 
 
        ![Screenshot](../Media/Module-4/77cf47c5-45a0-4f90-a521-540cd65caaaa.png)
 
-2.  Select **Create**, and then select choices for the following items:
+2.  Select **+ Add**, and then select choices for the following items:
 
-       * Provide a name for the new **Log Analytics workspace**, such as *myWorkspaceDemo*.  
        * Select a **Subscription** to link to by selecting from the drop-down list if the default selected is not appropriate.
        * For **Resource Group**, select **myResourceGroup** which is the Resource Group that contains the VM you created in Task 1.
+       * Provide a name for the new **Log Analytics workspace**, such as *myWorkspaceDemo*.  
        * Select the **EastUS** as the location. 
+       * Click **Next: Pricing tier**
+
+       ![Screenshot](../Media/Module-4/2020-05-15_11-28-09.png)
+
+
+
        * Leave the pricing Tier as **Per Gb (2018)**
   
-           ![Screenshot](../Media/Module-4/9f71d812-97af-483e-b0a4-a314fb169d64.png)
+           ![Screenshot](../Media/Module-4/2020-05-15_11-29-09.png)
 
-3.  After providing the required information on the **Log Analytics workspace** pane, select **OK**.  
+3.  After providing the required information on the **Log Analytics workspace** pane, select **Review + Create** then click **Create**.  
 
-1.  While the information is verified and the workspace is created, you can track its progress under **Notifications** from the menu. 
+4.  While the information is verified and the workspace is created, you can track its progress under **Notifications** from the menu. 
 
 ### Task 2: Enable the Log Analytics VM Extension
 
@@ -131,17 +137,17 @@ This exercise guides you through adding the open source Application Insights Jav
 Application Insights can gather telemetry data from any internet-connected application, running on-premises or in the cloud. Use the following steps to start viewing this data.
 
 
-1.  Select **Create a resource** > **Management tools** > **Application Insights**.
+1.  Select **Create a resource** > **IT & Management tools** > **Application Insights**.
 
     A configuration box appears; use the following table to fill out the input fields.
 
-   | Settings        | Value   | 
-   | ------------- |-----|
-   | **Name**      | Enter a Globally Unique Value |
-   | **Resource Group**     | myResourceGroup |
-   | **Location** | East US |
+       | Settings        | Value   | 
+       | ------------- |-----|
+       | **Name**      | Enter a Globally Unique Value |
+       | **Resource Group**     | myResourceGroup |
+       | **Location** | East US |
 
-2.  Click **Add**.
+2.  Click **Review + Create** then click **Create**.
 
 ### Task 2: Create an HTML file
 
@@ -176,11 +182,11 @@ Application Insights can gather telemetry data from any internet-connected appli
 
 ### Task 3: Configure App Insights SDK
 
-1.  Select **Overview** > **Essentials** > Copy your application's **Instrumentation Key**.
+1.   Navigate to the Applications Insights blade.  Select **Overview** > **Essentials** > Copy your application's **Instrumentation Key**.
 
        ![Screenshot](../Media/Module-4/2af9d8f7-4b69-492e-92da-c96029cd85b0.png)
 
-2. Edit ``hello_world.html`` and add your instrumentation key.
+2. Edit ``hello_world.html`` and add your instrumentation key and save the file.
 
 4.  Open ``hello_world.html`` in a local browser session. This will create a single pageview. You can refresh your browser to generate multiple test page views.
 
@@ -188,7 +194,7 @@ Application Insights can gather telemetry data from any internet-connected appli
 
 1.  You can now reopen the Application Insights **Overview** page in the Azure portal, where you retrieved your instrumentation key, to view details about your currently running application. The four default charts on the overview page are scoped to server-side application data. Since we are instrumenting the client/browser-side interactions with the JavaScript SDK this particular view doesn't apply unless we also have a server-side SDK installed.
 
-2.  Click on **Logs (Analytics)**.  This opens **Logs**, which provides a rich query language for analyzing all data collected by Application Insights. To view data related to the client-side browser requests run the following query:
+2.  Click on **Logs (Analytics)**.  This opens **Logs**, which provides a rich query language for analyzing all data collected by Application Insights. To view data related to the client-side browser requests run the following query then click **Run**:
 
     ```json
     // average pageView duration by name
@@ -207,7 +213,7 @@ Application Insights can gather telemetry data from any internet-connected appli
 
        ![Screenshot](../Media/Module-4/6fbf0845-41b3-4aa1-a213-9083468aacd8.png)
 
-3.  Go back to the **Overview** page. Click on **Performance** from under the **Investigate** header.  Here you find metrics related to the performance of your website. There is also a corresponding view for analyzing failures and exceptions in your website. You can click **Samples** to drill into individual transaction details. From here, you can access the end-to-end transaction details.
+3.  Go back to the **Overview** page. Click on **Performance** from under the **Investigate** header.  Here you find metrics related to the performance of your website. There is also a corresponding view for analyzing failures and exceptions in your website. You can click **Samples** to drill into individual transaction details. From here, you can access the end-to-end transaction details. Change Local Time button from Last 24 hours to Last 30 Minutes. Change Server/Browser button to Browser.
 
        ![Screenshot](../Media/Module-4/3546439a-3706-4094-a776-504d5d1b11ca.png)
 

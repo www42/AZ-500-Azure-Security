@@ -12,17 +12,19 @@ Bastion provides secure RDP and SSH connectivity to all VMs in the virtual netwo
 
 ### Task 1: Enable Azure Bastion on your subscription
 
-1.  Open the **Cloud Shell (PowerShell)** and create storage if required.
+1.  Open a browser and navigate to `https://portal.azure.com`
+
+1.  Open the **Cloud Shell** in PowerShell mode and create storage if required.
 
 1.  Run the following 2 commands to create a Resource Group and Virtual Machine and VNet to test the Azure Bastion service.
 
-     ```powershell
+    ```powershell
     New-AzResourceGroup -Name myResourceGroup -Location "East US"
-     ```
+    ```
     
-     ```powershell
-    New-AzVm -ResourceGroupName "myResourceGroup" -Name "myVM" -Location "East  US" -VirtualNetworkName "myVnet" -SubnetName "mySubnet" -SecurityGroupName   "myNetworkSecurityGroup" -OpenPorts 80,3389
-     ```
+    ```powershell
+    New-AzVm -ResourceGroupName "myResourceGroup" -Name "myVM" -Location "East  US" -VirtualNetworkName "myVnet" -SubnetName "mySubnet" -SecurityGroupName   "myNetworkSecurityGroup"
+    ```
 
     **Note**: The VM is being created without a Public IP Address.
 
@@ -59,10 +61,11 @@ Bastion provides secure RDP and SSH connectivity to all VMs in the virtual netwo
 1.  On the **Create a bastion** page, configure a new Bastion resource. Specify the configuration settings below.
 
     * **Subscription**: Select your Subscription
-    * **Resource Group**: myResourceGruop
+    * **Resource Group**: myResourceGroup
     * **Name**: Bastion
     * **Region**: East US
     * **Virtual network**: **myVnet**
+    * **Subnet**: **AzureBastionSubnet**
     * **Public IP address**: The public IP of the Bastion resource on which RDP/SSH will be accessed (over port 443). Create a new public IP, or use an existing one. The public IP address must be in the same region as the Bastion resource you are creating.
     * **Public IP address name**: Leave as default
     * **Public IP address SKU**: Prepopulated by default to **Standard**. Azure Bastion uses/supports only the Standard Public IP SKU.
@@ -82,13 +85,13 @@ Bastion provides secure RDP and SSH connectivity to all VMs in the virtual netwo
 If you create a bastion host in the portal by using an existing VM, various settings will automatically default corresponding to your virtual machine and/or virtual network.
 
 
-1.  In the **Azure portal - Bastion Preview**, navigate to your virtual machine, then click **Connect**.
+1.  In the **Azure portal**, navigate to your virtual machine, then click **Connect**.
 
        ![Screenshot](../Media/Module-2/d881050d-cc0f-4a95-b8a4-e9c946f8ee17.png)
 
-1.  On the right sidebar, click **Bastion**, then **Use Bastion**.
+1.  On the dropdown, click **Bastion**.
 
-       ![Screenshot](../Media/Module-2/ddb1ac72-df86-41b3-b4ef-6c71cc67d98b.png)
+       ![Screenshot](../Media/Module-2/2020-05-23_08-49-04.png)
 
 1.  De-select Open in new window and then enter **LocalAdmin** and **Pa55w.rd1234** for the credentials and click **Connect**.
 

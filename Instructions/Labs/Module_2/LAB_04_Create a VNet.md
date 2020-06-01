@@ -26,15 +26,20 @@ A virtual network is the fundamental building block for your private network in 
 
     | Setting | Value |
     | ------- | ----- |
-    | Name | Enter *myVirtualNetwork*. |
-    | Address space | Enter *10.1.0.0/16*. |
     | Subscription | Select your subscription.|
     | Resource group | Select **Create new**, enter *myResourceGroup*, then select **OK**. |
+    | Name | Enter *myVirtualNetwork*. |
     | Location | Select **East US**.|
+
+    Select the IP Addresses tab and enter the following values:
+
+    | Setting | Value |
+    | ------- | ----- |
+    | Address space | Enter *10.1.0.0/16*. |
     | Subnet - Name | Enter *myVirtualSubnet*. |
     | Subnet - Address range | Enter *10.1.0.0/24*. |
 
-1.  Leave the rest as default and select **Create**.
+1.  Leave the rest as default and select **Review + create**, then click **Create**.
 
 ### Task 2: Create virtual machines
 
@@ -42,7 +47,7 @@ A virtual network is the fundamental building block for your private network in 
 Create two VMs in the virtual network:
 
 
-1.  On the upper-left side of the screen, select **Create a resource** > **Compute** > **Windows Server 2019 Datacenter**.
+1.  On the upper-left side of the screen, select **Create a resource** > **Compute** > **Virtual machine**.
 
 1.  In **Create a virtual machine - Basics**, enter or select this information:
 
@@ -55,14 +60,15 @@ Create two VMs in the virtual network:
     | Virtual machine name | Enter *myVm1*. |
     | Region | Select **East US**. |
     | Availability options | Leave the default **No infrastructure redundancy required**. |
-    | Image | Leave the default **Windows Server 2019 Datacenter**. |
-    | Size | Leave the default **Standard DS1 v2**. |
+    | Image | Select **Windows Server 2019 Datacenter**. |
+    | Size | Select **Standard DS1 v2**. |
     | **ADMINISTRATOR ACCOUNT** |  |
     | Username | Enter a username of your choosing. |
     | Password | Pa55w.rd1234 |
     | Confirm Password | Reenter password. |
     | **INBOUND PORT RULES** |  |
-    | Public inbound ports | Select **None**. |
+    | Public inbound ports | Select **Allow selected ports**. |
+    | Select inbound ports | Select **HTTP** and **RDP**.
     | **SAVE MONEY** |  |
     | Already have a Windows license? | Leave the default **No**. |
 
@@ -77,8 +83,7 @@ Create two VMs in the virtual network:
     | Virtual network | Leave the default **myVirtualNetwork**. |
     | Subnet | Leave the default **myVirtualSubnet (10.1.0.0/24)**. |
     | Public IP | Leave the default **(new) myVm1-ip**. |
-    | Public inbound ports | Select **Allow selected ports**. |
-    | Select inbound ports | Select **HTTP** and **RDP**.
+   
 
 1.  Select **Next : Management**.
 

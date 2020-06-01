@@ -18,7 +18,7 @@ Azure routes traffic between all subnets within a virtual network, by default. Y
 
 ### Task 1: Create a route table
 
-1.  On the upper-left side of the screen, select **Create a resource** > **Networking** > **Route table**.
+1.  On the upper-left side of the screen, select **Create a resource** > **Networking** > **Route table**, alternatively search for Route table in the Azure portal.
 
 1.  In **Create route table**, enter or select this information:
 
@@ -64,15 +64,21 @@ Before you can associate a route table to a subnet, you have to create a virtual
 
     | Setting | Value |
     | ------- | ----- |
-    | Name | Enter *myVirtualNetwork*. |
-    | Address space | Enter *10.0.0.0/16*. |
     | Subscription | Select your subscription. |
     | Resource group | Select ***Select existing*** > **myResourceGroup**. |
+    | Name | Enter *myVirtualNetwork*. |
     | Location | Leave the default **East US**. |
-    | Subnet - Name | Enter *Public*. |
+
+    Select the IP Addresses tab and enter the following values:    
+
+    | Setting | Value |
+    | ------- | ----- |
+    | Address space | Enter *10.0.0.0/16*. |
+    | Subnet - Name | Select the existing default subnet to change the name to Public then select Save. |
     | Subnet - Address range | Enter *10.0.0.0/24*. |
 
-1.  Leave the rest of the defaults and select **Create**.
+
+1.  Leave the rest of the defaults and select **Review + create**, then click **Create**.
 
 ### Task 4: Add subnets to the virtual network
 
@@ -116,7 +122,7 @@ Before you can associate a route table to a subnet, you have to create a virtual
 
 NVAs are VMs that help with network functions like routing and firewall optimization. You can select a different operating system if you want. This tutorial assumes you're using **Windows Server 2016 Datacenter**.
 
-1.  On the upper-left side of the screen, select **Create a resource** > **Compute** > **Windows Server 2016 Datacenter**.
+1.  On the upper-left side of the screen, select **Create a resource** > **Compute** > **Virtual Machine**.
 
 1.  In **Create a virtual machine - Basics**, enter or select this information:
 
@@ -129,8 +135,8 @@ NVAs are VMs that help with network functions like routing and firewall optimiza
     | Virtual machine name | Enter *myVmNva* |
     | Region | Select **East US**. |
     | Availability options | Leave the default **No infrastructure redundancy required**. |
-    | Image | Leave the default **Windows Server 2016 Datacenter**. |
-    | Size | Leave the default **Standard DS1 v2**. |
+    | Image | Select **Windows Server 2016 Datacenter**. |
+    | Size | Select **Standard DS1 v2**. |
     | **ADMINISTRATOR ACCOUNT** |  |
     | Username | Enter a user name of your choosing. |
     | Password | Pa55w.rd1234|
@@ -201,28 +207,28 @@ Create a public VM and a private VM in the virtual network. Later, you'll use th
 
 1.  Complete steps 1-12  of the Create an NVA task. Use most of the same settings. These values are the ones that have to be different:
 
- | Setting | Value |
- | ------- | ----- |
- | **PUBLIC VM** | |
- | BASICS |  |
- | Virtual machine name | Enter *myVmPublic*. |
- | NETWORKING | |
- | Subnet | Select **Public (10.0.0.0/24)**. |
-| Public IP address | Accept the default. |
-| Public inbound ports | Select **Allow selected ports**. |
-| Select inbound ports | Select **HTTP** and **RDP**. |
-| MANAGEMENT | |
-| Diagnostics storage account | Leave the default. |
-| **PRIVATE VM** | |
-| BASICS |  |
-| Virtual machine name | Enter *myVmPrivate*. |
-| NETWORKING | |
-| Subnet | Select **Private (10.0.1.0/24)**. |
-| Public IP address | Accept the default. |
-| Public inbound ports | Select **Allow selected ports**. |
-| Select inbound ports | Select **HTTP** and **RDP**. |
-| MANAGEMENT | |
-| Diagnostics storage account | Leave the default. |
+    | Setting | Value |
+    | ------- | ----- |
+    | **PUBLIC VM** | |
+    | BASICS |  |
+    | Virtual machine name | Enter *myVmPublic*. |
+    | NETWORKING | |
+    | Subnet | Select **Public (10.0.0.0/24)**. |
+    | Public IP address | Accept the default. |
+    | Public inbound ports | Select **Allow selected ports**. |
+    | Select inbound ports | Select **HTTP** and **RDP**.  *If the Networking tab does not allow the selected ports to be changed then go back to the Basics tab to add HTTP Port 80.* |
+    | MANAGEMENT | |
+    | Diagnostics storage account | Leave the default. |
+    | **PRIVATE VM** | |
+    | BASICS |  |
+    | Virtual machine name | Enter *myVmPrivate*. |
+    | NETWORKING | |
+    | Subnet | Select **Private (10.0.1.0/24)**. |
+    | Public IP address | Accept the default. |
+    | Public inbound ports | Select **Allow selected ports**. |
+    | Select inbound ports | Select **HTTP** and **RDP**. |
+    | MANAGEMENT | |
+    | Diagnostics storage account | Leave the default. |
 
 You can create the *myVmPrivate* VM while Azure creates the *myVmPublic* VM. Don't continue with the rest of the steps until Azure finishes creating both VMs.
 
@@ -234,7 +240,7 @@ You can create the *myVmPrivate* VM while Azure creates the *myVmPublic* VM. Don
 
 1.  When the **myVmPrivate** VM appears in the search results, select it.
 
-1.  Select **Connect** to create a remote desktop connection to the *myVmPrivate* VM.
+1.  Select **Connect** then select **RDP** to create a remote desktop connection to the *myVmPrivate* VM.
 
 1.  In **Connect to virtual machine**, select **Download RDP File**. Azure creates a Remote Desktop Protocol (*.rdp*) file and downloads it to your computer.
 

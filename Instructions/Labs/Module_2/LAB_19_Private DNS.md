@@ -50,7 +50,7 @@ It may take a few minutes to create the zone.
 2.  For **Name**, type **myAzureVNet**.
 3.  For **Resource group**, select **MyAzureResourceGroup**.
 4.  For **Location**, select **East US**.
-5.  Accept the other default values and select **Create**.
+5.  Accept the other default values and select **Review + create**, then select **Create**.
 
 ### Task 3: Link the virtual network
 
@@ -105,7 +105,7 @@ The following example creates a record with the relative name **db** in the DNS 
 
 2.  Select **+ Record set**.
 3.  For **Name**, type **db**.
-4.  For **IP Address**, type the IP address you see for **myVM01**. This should be auto registered when the virtual machine started.
+4.  For **IP Address**, type the IP address you see for **myVM01**. This should be auto registered when the virtual machine started and should be **10.0.0.4**.
 5.  Select **OK**.
 
 ### Task 6: Test the private zone
@@ -120,9 +120,9 @@ You can use the ping command to test name resolution. So, configure the firewall
 
 2.  Run the following command:
 
-       ```powershell
+    ```powershell
        New-NetFirewallRule -DisplayName "Allow ICMPv4-In" -Protocol ICMPv4
-       ```
+    ```
 
 1.  Repeat for myVM02.
 
@@ -130,9 +130,9 @@ You can use the ping command to test name resolution. So, configure the firewall
 
 1.  From the myVM02 Windows PowerShell command prompt, ping myVM01 using the automatically registered host name:
 
-       ```cli
+    ```cli
        ping myVM01.private.contoso.com
-       ```
+    ```
    
     You should see output that looks similar to this:
 
@@ -146,12 +146,12 @@ You can use the ping command to test name resolution. So, configure the firewall
    
 2.  Now ping the **db** name you created previously:
    
-       ```cli
+    ```cli
        ping db.private.contoso.com
-       ```
+    ```
        You should see output that looks similar to this:
    
-       ```cli
+    ```cli
        PS C:\> ping db.private.contoso.com
 
        Pinging db.private.contoso.com [10.2.0.4] with 32 bytes of data:
@@ -165,7 +165,7 @@ You can use the ping command to test name resolution. So, configure the firewall
        Approximate round trip times in milli-seconds:
            Minimum = 0ms, Maximum = 0ms, Average = 0ms
        PS C:\>
-       ```
+    ```
 
 
 | WARNING: Prior to continuing you should remove all resources used for this lab.  To do this in the **Azure Portal** click **Resource groups**.  Select any resources groups you have created.  On the resource group blade click **Delete Resource group**, enter the Resource Group Name and click **Delete**.  Repeat the process for any additional Resource Groups you may have created. **Failure to do this may cause issues with other labs.** |

@@ -10,7 +10,7 @@
 
     ```cli
     https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoftLearning%2FAZ-500-Azure-Security%2Fmaster%2FAllfiles%2FLabs%2FMod3_Lab02%2Fazuredeploy.json 
-     ```
+    ```
 
 1.  **Under Resource** group click create new and use the default name "**Mod3Lab2**"
 
@@ -20,11 +20,11 @@
 warning
 **Note**: You must wait for the SQL database with the test data to deploy
 
-### Task 2: Enable auditing on your databasease
+### Task 2: Enable auditing on your database
 
 1.  Select your resource group created in the lab setup
 
-2.  **Select** the SQL server **az500labserver2**
+2.  **Select** the SQL server **your unique SQL Server name**
 
 3.  **Under Security**, select **Auditing**
 
@@ -32,13 +32,13 @@ warning
 
 5.  Select **storage** as the location to send the audit logs to
 
-6.  **Click configure**
+6.  Click **Configure**
 
 7.  Select **Your Subscription**
 
-8.  **Click Create New**.
+8.  Click **Storage account** then if necessary click **Create New**. The Create storage account blade should open..
 
-9.  Name the storage account **mod4lab2yourname** ensuring you replace **yourname** with a unique name using lowercase letters
+9.  Name the storage account **mod3lab2yourname** ensuring you replace **yourname** with a unique name using lowercase letters
 
 10. **Click OK**.
 
@@ -52,19 +52,19 @@ warning
 
 1.  To review audit logs for a database return to the resource group created in the lab setup
 
-1.  Click **AZ500LabDb (az500labserver2/AZ500LabDb)** to select your test database
+2.  Click **AZ500LabDb (your unique SQL Server name/AZ500LabDb)** to select your test database
 
-1.  **Under Security**, select **Auditing**
+3.  **Under Security**, select **Auditing**
   
-    **Note**: that the Auditing looks off here but it is set on the underlying server level so it is turned on for this database
+    **Note**: The Auditing looks off here but it is set on the underlying server level so it is turned on for this database
 
 
-1.  Click **View Audit Log**.
+4.  Click **View Audit Logs**.
 
-  **Note**: Here you will review the output of the audit logs of the Db including any attempted SQL injections, since this is a test database that has been created not log ago the will be minimal audits if any in the log at the current time.
+  **Note**: Here you will review the output of the audit logs of the database including any attempted SQL injections. Since this is a test database created recently, there will be minimal audits if any in the log at the current time.
 
   If server auditing is enabled, the database-configured audit will exist side-by-side with the server audit.
-Notice that you can select for audit logs to be written to an Azure storage account, to a Log Analytics workspace for consumption by Azure Monitor logs, or to event hub for consumption using an event hub. You can configure any combination of these options, and audit logs will be written to each.
+Notice that you can select for audit logs to be written to an Azure storage account, to a Log Analytics workspace for consumption by Azure Monitor logs, or to Event Hub for consumption using an event hub. You can configure any combination of these options, and audit logs will be written to each.
 
 
 

@@ -43,15 +43,17 @@ In this section, you create a public load balancer that helps load balance virtu
 
 1.  On the top left-hand side of the screen click **+ Create a resource** > **Networking** > **Virtual network** and enter these values for the virtual network:
     - **myVnet** - for the name of the virtual network.
-    - **10.0.0.0/16** - for the Address space
     - **myResourceGroupLB** - for the name of the existing resource group
+
+    
+    Select the IP Addresses tab and enter the following values:
+    
+    - **10.0.0.0/16** - for the Address space
     - **myBackendSubnet** - for the subnet name.
     - **10.0.0.0/24** - for the Subnet Address range
     </br>
 
-2.  Click **Create** to create the virtual network.
-
-     ![Screenshot](../Media/Module-2/19c5f372-c2c5-453b-8b64-f936162531e8.png)
+2.  Click **Review + create**, then click **Create** to create the virtual network.
 
 ### Task 3: Create virtual machines
 
@@ -88,9 +90,9 @@ In this section, you create a public load balancer that helps load balance virtu
 3.  Log into the VM with username *localadmin*.
 4.  Open PowerShell and run the following command to install IIS.
 
-     ```powershell
+    ```powershell
     Install-WindowsFeature Web-Server
-     ```
+    ```
 
 7.  Repeat steps 1 to 4 for the virtual machine *myVM2*.
 
@@ -99,7 +101,7 @@ In this section, you create a public load balancer that helps load balance virtu
 
 In this section, you  configure load balancer settings for a backend address pool and a health probe, and specify a load balancer rule.
 
-To distribute traffic to the VMs, a backend address pool contains the IP addresses of the virtual (NICs) connected to the load balancer. Create the backend address pool *myBackendPool* to inlcude *VM1* and *VM2*.
+To distribute traffic to the VMs, a backend address pool contains the IP addresses of the virtual (NICs) connected to the load balancer. Create the backend address pool *myBackendPool* to include *VM1* and *VM2*.
 
 
 1.  Click **All resources** in the left-hand menu, and then click **myLoadBalancer** from the resources list.
@@ -199,7 +201,7 @@ This template allows you to create 2 Virtual Machines under a Load balancer and 
 
 1.  Click **Deploy to Azure**
 
-     ![Screenshot](../Media/Module-2/2c12a035-65aa-41e9-ad41-59a955a5432f.png)
+     ![Screenshot](../Media/Module-2/81169024-6590a280-8f98-11ea-8688-c4bb5f4fc479.png)
 
 1.  On the template blade that opens, enter the following details:
 
@@ -274,7 +276,7 @@ A virtual network is needed for communication between the resources that you cre
 
 4. On the **Backend targets** tab, select **appGatewayBackendPool** for the **Backend target**.
 
-5. For the **HTTP setting**, select **Create new** to create a new HTTP setting. The HTTP setting will determine the behavior of the routing rule. In the **Add an HTTP setting** window that opens, enter *myHTTPSetting* for the **HTTP setting name**. Accept the default values for the other settings in the **Add an HTTP setting** window, then select **Add** to return to the **Add a routing rule** window. 
+5. For the **HTTP setting**, select **Add new** to create a new HTTP setting. The HTTP setting will determine the behavior of the routing rule. In the **Add an HTTP setting** window that opens, enter *myHTTPSetting* for the **HTTP setting name**. Accept the default values for the other settings in the **Add an HTTP setting** window, then select **Add** to return to the **Add a routing rule** window. 
 
 
 
@@ -286,7 +288,7 @@ A virtual network is needed for communication between the resources that you cre
 
 7. Select **Add**
 
-7. Select **Next: Tags** and then **Next: Review + create**.
+7. Select **Next: Tags** and then **Next: Review + create**, then select **Create**.
 
 
 ### Task 2: Test the application gateway
@@ -299,6 +301,7 @@ A virtual network is needed for communication between the resources that you cre
 
      ![Screenshot](../Media/Module-2/ea959c21-0774-413a-81aa-824547088c3d.png)
 
+1.  To verify, go to **Network Watcher**, choose **Topology** then choose **myResourceGroupLB** to see the overall network diagram.
 
 | WARNING: Prior to continuing you should remove all resources used for this lab.  To do this in the **Azure Portal** click **Resource groups**.  Select any resources groups you have created.  On the resource group blade click **Delete Resource group**, enter the Resource Group Name and click **Delete**.  Repeat the process for any additional Resource Groups you may have created. **Failure to do this may cause issues with other labs.** |
 | --- |

@@ -11,21 +11,21 @@ In this task you will create a Sophos XG Virtual Appliance which will emulate an
 
 1.  In your browser, navigate to the following URL to open the ARM template:
 
-     ```cli
+    ```cli
     https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FGoDeploy%2FAZ300%2Fmaster%2Fxg-azure-master%2FmainTemplate.json
-     ```
+    ```
  
 2.  Login to the portal if required.
 
 3.  On the Custom deployment enter or select the following details:
 
- | Setting | Value |
- |---|---|
- | Resource Group | _Create New_ **OnPremRG** |
- | Location | **Southeast Asia** |
- | Admin Password | **Pa55w.rd1234** |
- | Public IP DNS | _Enter a unique name_ |
- | Storage Name | _Enter a unique name_ |
+     | Setting | Value |
+     |---|---|
+     | Resource Group | _Create New_ **OnPremRG** |
+     | Location | **Southeast Asia** |
+     | Admin Password | **Pa55w.rd1234** |
+     | Public IP DNS | _Enter a unique name_ |
+     | Storage Name | _Enter a unique name_ |
  
 4.  Scroll to the bottom of the blade and click the check box next to  I agree to the terms and conditions..... and click **Purchase**. 
  
@@ -39,20 +39,23 @@ In this task you will create a Virtual Machine and a Virtual Network inside a ne
 
 1.  Click **Create a resource** > **Networking** > **Virtual Network**
 
-1.  Change the values in the **Create virtual network** blade change the values tobe the same as the output below:
+1.  Change the values in the **Create virtual network** blade change the values to be the same as the output below:
 
       - **Name** S2S_RG-vnet
-      - **Address space** 172.17.0.0/16
       - **Resource group** Create New: S2S_RG
       - **Location**: East US
+
+     Click the IP Addresses tab and enter the following values:
+
+      - **Address space** 172.17.0.0/16
       - **Subnet address range** 172.17.0.0/24
 
-1.  Click **Create**.
+2.  Click **Create**.
 **Note:**  You can continue to the next task without having to wait for the deployment to complete.
 
 
 
-### Task 2: Create a Gateway Subnet and a Virtual network Gateway.
+### Task 3: Create a Gateway Subnet and a Virtual network Gateway.
 
 
 In this task you will Create a Gateway Subnet and a Virtual network Gateway which will enable you to create a connection between On-Prem and your Azure VNet.
@@ -98,7 +101,7 @@ In this task you will Create a Gateway Subnet and a Virtual network Gateway whic
 **Note:**  The gateway may take up to 45 minutes to deploy, although in most cases it is much quicker.  Monitor this by clicking on the Bell Icon. You can continue to the next task whilst the Gateway is deploying.
 
 
-### Task 3: Configure the Sophos virtual appliance.
+### Task 4: Configure the Sophos virtual appliance.
 
 1.  On the Azure Portal Hub menu click **Resource Groups**.
 
@@ -114,7 +117,7 @@ In this task you will Create a Gateway Subnet and a Virtual network Gateway whic
 
 1.  Open a new browser session and navigate to **`https://x.x.x.x:4444`** (where x.x.x.x is the public IP address you noted above).
 
-1.  Depending on your browser there may be different options to proceed with the connection.
+1.  Depending on your browser there may be different options to proceed with the connection.  Select Details then Go to web page (not recommended)
 
      ![Screenshot](../Media/Module-2/9c215000-18e0-467e-9d5d-de5cf33ce06a.png)
 
@@ -140,7 +143,7 @@ In this task you will Create a Gateway Subnet and a Virtual network Gateway whic
  
 1.  Return back to the Sophos Portal.
 
-1.  Go to **VPN > IPsec Connections**, select **Add **and configure the following settings:
+1.  Go to **VPN** > **IPsec Connections**, select **Add** and configure the following settings:  *If in doubt see the screenshots below*
 
     **General Settings Section:**
 
@@ -165,7 +168,7 @@ In this task you will Create a Gateway Subnet and a Virtual network Gateway whic
 
     **Gateway Settings Section**:
 
-      - **Listening Interface**: Leave the default.
+      - **Listening Interface**: Select the default.
       - **Gateway Address**: Input the public IP of the Azure VPN gateway noted earlier.
       - **Local ID**: IP Address.
       - **Remote ID**: IP Address.
@@ -190,7 +193,7 @@ In this task you will Create a Gateway Subnet and a Virtual network Gateway whic
 
 
 
-### Task 4: Creating Azure connection.
+### Task 5: Creating Azure connection.
 
 
 In this task you will create a connection on your Azure Gateway to the On-Prem firewall and establish the connection.
@@ -232,12 +235,14 @@ In this task you will create a connection on your Azure Gateway to the On-Prem f
 
 1.  Refresh the page and the connection should be established.
 
-    **Note:**  It may take 30 seconds to establish the connection.
+    **Note:**  It may take 30 seconds to establish the connection.  If the connection still fails to connect, return to the Sophos Portal and click 
 
  
      ![Screenshot](../Media/Module-2/8a0135df-b6af-4657-b0f0-f08b9deba7a6.png)
 
+    **Note:**  If the connection still fails to connect, return to the Sophos Portal and click the red/orange icon to force the connection to be established.
 
+     ![Screenshot](../Media/Module-2/2020-05-23_09-07-49.png)
 
 | WARNING: Prior to continuing you should remove all resources used for this lab.  To do this in the **Azure Portal** click **Resource groups**.  Select any resources groups you have created.  On the resource group blade click **Delete Resource group**, enter the Resource Group Name and click **Delete**.  Repeat the process for any additional Resource Groups you may have created. **Failure to do this may cause issues with other labs.** |
 | --- |  

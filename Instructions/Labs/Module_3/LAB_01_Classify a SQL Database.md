@@ -10,9 +10,9 @@
 
 1.  In your browser, navigate to the following URL to open the ARM template:
 
-     ```cli
+    ```cli
     https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoftLearning%2FAZ-500-Azure-Security%2Fmaster%2FAllfiles%2FLabs%2FMod3_Lab01%2Fazuredeploy.json
-     ```
+    ```
 
 1.  Under **Resource group** click create new and use the default name "**Mod3Lab1**"
 
@@ -29,7 +29,7 @@ warning
 
 1.  **Select** the resource group of **Mod3Lab1**
 
-1.  Click **az500labserver**
+1.  Click **your unique SQL server name**
 
 1.  Under the **Security heading** in the **Azure SQL Database** pane, navigate to **Advanced Data Security**.
 
@@ -39,7 +39,7 @@ warning
 
 1.  Return to the **Mod3Lab1** resource group
 
-1.  **Select** the **SQL databse AZ500LabDb (az500labserver/AZ500LabDb)**
+1.  **Select** the **SQL databse AZ500LabDb (your unique SQL server name/AZ500LabDb)**
 
 1.  **Click** Advanced Data Security again 
 

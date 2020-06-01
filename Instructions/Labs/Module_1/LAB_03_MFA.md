@@ -30,7 +30,7 @@ In your policy, set:
 
 5.  In the **Manage** section, click **Security**.
 
-6.  In the **Security - Getting started blade**  click **Conditional access**.
+6.  In the **Security** blade, click **Conditional access**.
 
      ![Screenshot](../Media/Module-1/NewConditionalAccessScreen.png)
  
@@ -51,13 +51,13 @@ In your policy, set:
 
 10.  On the **Users and groups** page, perform the following steps:
 
-a. Click **Select users and groups**, and then select **Users and groups**.
+      a. Click **Select users and groups**, and then select **Users and groups**.
 
-b. Click **Select**.
+      b. Click **Select**.
 
-c. On the **Select** page, select **Isabella Simonsen**, and then click **Select**.
+      c. On the **Select** page, select **Isabella Simonsen**, and then click **Select**.
 
-d. On the **Users and groups** page, click **Done**.
+      d. On the **Users and groups** page, click **Done**.
 
 11.  Click **Cloud apps or actions**.
 
@@ -185,7 +185,6 @@ In this lab, you walk you through configuring a conditional access policy enabli
 5.  Under **users and groups**, select the **Select users and groups** check box
     * Select your pilot group **MFA Pilot**
     * Click **Select**
-    * Click **Done**
     </br>
 6.  Under **Cloud apps or actions**, select the **Select apps** radio button
     * The cloud app for the Azure portal is **Microsoft Azure Management**
@@ -196,6 +195,7 @@ In this lab, you walk you through configuring a conditional access policy enabli
 8.  Under **Grant**, make sure the **Grant access** radio button is selected
     * Check the box for **Require multi-factor authentication**
     * Click **Select**
+    * Click **Done**
     </br>
 9.  Skip the **Session** section
 10. Set the **Enable policy** toggle to **On**
@@ -208,12 +208,12 @@ To prove that your conditional access policy works, you test logging in to a res
 
 
 1.  Open a new browser window in InPrivate or incognito mode and browse to **`https://account.activedirectory.windowsazure.com`**
-    * Log in with the test user created as part of the prerequisites section of this article and note that it should not ask you to complete MFA.
+    * Log in with the Isabella account.  You should not ask you to complete MFA.
     * Close the browser window.
 
 2.  Open a new browser window in InPrivate or incognito mode and browse to **`https://portal.azure.com`**
 
-       * Log in with the test user created as part of the prerequisites section of this article and note that you should now be required to register for and use Azure Multi-Factor Authentication.
+       * Log in with the Isabella account.  You should now be required to register for and use Azure Multi-Factor Authentication.
        * Close the browser window.
 
 | WARNING: Prior to continuing you should remove all resources used for this lab.  To do this in the **Azure Portal** click **Resource groups**.  Select any resources groups you have created.  On the resource group blade click **Delete Resource group**, enter the Resource Group Name and click **Delete**.  Repeat the process for any additional Resource Groups you may have created. **Failure to do this may cause issues with other labs.** |

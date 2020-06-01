@@ -40,11 +40,11 @@ The best way to ensure that locks are in place and protecting your resources is 
 1.  Open the Cloud Shell (PowerShell) and run the following commands to create a Resource Group and Storage Account.  _(Change XXXXXX in the command to something unique)_
 
      ```powershell
-    New-AzResourceGroup -Name LockRG -Location EastUS
+     New-AzResourceGroup -Name LockRG -Location EastUS
      ```
     
      ```powershell
-    New-AzStorageAccount -ResourceGroupName LockRG -Name XXXXXX -Location  EastUS -SkuName Standard_LRS -Kind StorageV2 
+     New-AzStorageAccount -ResourceGroupName LockRG -Name XXXXXX -Location  EastUS -SkuName Standard_LRS -Kind StorageV2 
      ```
 
 1.  Locate the Storage Account and select it. In the main blade, click the "Locks" icon
@@ -68,15 +68,19 @@ The best way to ensure that locks are in place and protecting your resources is 
 1.  Open the Cloud Shell (PowerShell) and run the following commands to create a Lock on the Storage Account. _(Change XXXXXX in the command to the name of your Storage Account)_
 
      ```powershell
-    New-AzResourceLock -LockLevel CanNotDelete -LockName criticalStorageLock -ResourceName XXXXXX  -ResourceType Microsoft.Storage/storageAccounts -ResourceGroupName LockRG
+     Connect-AzureAD
+     ```
+
+     ```powershell
+     New-AzResourceLock -LockLevel CanNotDelete -LockName criticalStorageLock -ResourceName XXXXXX -ResourceType Microsoft.Storage/storageAccounts -ResourceGroupName LockRG
      ```
 
 1.  To remove a lock use the following command. _(Change XXXXXX in the command to the name of your Storage Account)_
 
      ```powershell
-    Remove-AzResourceLock -LockName criticalStorageLock -ResourceName  XXXXX -ResourceGroupName LockRG -ResourceType Microsoft.Storage/storageAccounts
+     Remove-AzResourceLock -LockName criticalStorageLock -ResourceName  XXXXX -ResourceGroupName LockRG -ResourceType Microsoft.Storage/storageAccounts
      ```
-
+     If prompted to confirm, enter **Y** and press **Enter**
 
 By using Resource Logs you can put in place an extra line of defense against accidental or malicious changing and/or deletion of your most important resources. It's not perfect, as your administrators can still remove these locks, but doing so requires a conscious effort, as the only purpose for removing a lock is to circumvent it. As these locks sit outside of RBAC you can apply them and be sure that they are impacting all your users, regardless of what roles or custom permissions you may have granted them.
 

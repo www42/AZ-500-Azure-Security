@@ -18,9 +18,9 @@ Network traffic is subjected to the configured firewall rules when you route you
 
 1.  In your browser, navigate to the following URL to open the ARM template:
 
-     ```cli
+    ```cli
     https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FGoDeploy%2FAZ500%2Fmaster%2FAZ500%20Mod2%20Lab%207%2Ftemplate.json
-     ```
+    ```
  
 2.  Click **Create new** under the Resource Group and use the resource group name of **Test-FW-RG**  
 
@@ -32,20 +32,20 @@ Network traffic is subjected to the configured firewall rules when you route you
 
     This lab setup template will set up the following resources for the lab
 
- |Name     |Type     | Location|
- |---------|---------|---------|
-azureFirewalls-ip|	Public IP address|	East US	
-Firewall-route |	Route table|	East US	
-Srv-Jump|	Virtual machine|	East US	
-Srv-Jump_OsDisk|	Disk|	East US	
-srv-jump121	|Network interface|	East US	
-Srv-Jump-nsg|	Network security group|	East US	
-Srv-Jump-PIP|	Public IP address|	East US	
-Srv-Work|	Virtual machine|	East US	
-Srv-Work_OsDisk_1 |	Disk|	East US	
-srv-work267|	Network interface|	East US	
-Srv-Work-nsg|	Network security group|	East US	
-Test-FW-VN|	Virtual network|	East US
+      |Name     |Type     | Location|
+     |---------|---------|---------|
+     azureFirewalls-ip|	Public IP address|	East US	
+     Firewall-route |	Route table|	East US	
+     Srv-Jump|	Virtual machine|	East US	
+     Srv-Jump_OsDisk|	Disk|	East US	
+     srv-jump121	|Network interface|	East US	
+     Srv-Jump-nsg|	Network security group|	East US	
+     Srv-Jump-PIP|	Public IP address|	East US	
+     Srv-Work|	Virtual machine|	East US	
+     Srv-Work_OsDisk_1 |	Disk|	East US	
+     srv-work267|	Network interface|	East US	
+     Srv-Work-nsg|	Network security group|	East US	
+     Test-FW-VN|	Virtual network|	East US
 
 
 ### Task 2: Deploy the firewall
@@ -54,26 +54,26 @@ Test-FW-VN|	Virtual network|	East US
 In this task you will deploy the Azure firewall into the VNet.
 
 
-1.  In the Azure portal, click **All services** and search for and select **Azure Firewall**.
+1.  In the Azure portal, click **All services** and search for and select **Firewalls**.
 
      ![Screenshot](../Media/Module-2/04b7eeab-d6e9-4c62-bad9-6c496ac36e32.png)
 
-3.  On the **Firewall** blade click **Create firewall**. 
+3.  On the **Firewalls** blade click **Create firewall**. 
 
      ![Screenshot](../Media/Module-2/72817883-109b-4a17-9c26-edc7a71802ef.png)
 
 4.  On the **Create a Firewall** blade, use the following table to configure the firewall:
 
-   |Setting  |Value  |
-   |---------|---------|
-   |Subscription     |_your subscription_|
-   |Resource group     |**Use existing**: Test-FW-RG |
-   |Name     |Test-FW01|
-   |Location     |East US|
-   |Choose a virtual network     |**Use existing**: Test-FW-VN|
-   |Public IP address     |**Create new**. **TEST-FW-PIP** The Public IP address must be the Standard SKU type.|
+     |Setting  |Value  |
+     |---------|---------|
+     |Subscription     |_your subscription_|
+     |Resource group     |**Use existing**: Test-FW-RG |
+     |Name     |Test-FW01|
+     |Location     |East US|
+     |Choose a virtual network     |**Use existing**: Test-FW-VN|
+     |Public IP address     |**Add new**. **TEST-FW-PIP** The Public IP address must be the Standard SKU type.|
    
-   ![Screenshot](../Media/Module-2/ef63f092-da4a-4df4-8a1b-56d49228aa84.png)
+     ![Screenshot](../Media/Module-2/ef63f092-da4a-4df4-8a1b-56d49228aa84.png)
 
 5.  Click **Review + create**.
 6.  Review the summary, and then click **Create** to create the firewall.
@@ -169,17 +169,17 @@ For testing purposes in this tutorial, you configure the primary and secondary D
 
 2.  Click the network interface for the **Srv-Work** virtual machine.
 
-3.  Under **Settings**, click **Networking**.
+    1.  Under **Settings**, click **Networking**.
 
-4.  Select the NIC
+    2.  Select the NIC
 
-5.  Under **DNS servers**, click **Custom**.
+3.  Under **DNS servers**, click **Custom**.
 
-6.  Type **209.244.0.3** in the **Add DNS server** text box, and **209.244.0.4** in the next text box.
+4.  Type **209.244.0.3** in the **Add DNS server** text box, and **209.244.0.4** in the next text box.
 
-7.  Click **Save**. 
+5.  Click **Save** and wait until it has successfully saved.. 
 
-8.  Restart the **Srv-Work** virtual machine.
+6.  Restart the **Srv-Work** virtual machine.
 
 ### Task 7: Test the firewall
 
@@ -191,26 +191,26 @@ In this task you will test the firewall to confirm that it works as expected.
 
 2.  Connect to the **Srv-Jump** virtual machine using RDP, and from there open a remote desktop connection to the **Srv-Work** private IP address.
 
-	-	**Username**: localadmin
+    -	**Username**: localadmin
     -	**Password**: Pa55w.rd1234
-</br>
+
 3.  Open Internet Explorer and browse to **`https://www.msn.com`**
 
 4.  Click **OK** > **Close** on the security alerts.
 
-   You should see the MSN home page.
+     You should see the MSN home page.
 
-5.  Browse to **`https://www.msn.com`**
+5.  Browse to **`https://msn.com`**
 
        - You should be blocked by the firewall.
        - So now you've verified that the firewall rules are working:
           - You can browse to the one allowed FQDN, but not to any others.
           - You can resolve DNS names using the configured external DNS server.
 
+1.  To troubleshoot, go to **Network Watcher**, choose **Topology** then choose **TEST-FW-RG** to see the overall network diagram.
 
-1. Leave the all resources in place for the next lab.
-
-
+| WARNING: Prior to continuing you should remove all resources used for this lab.  To do this in the **Azure Portal** click **Resource groups**.  Select any resources groups you have created.  On the resource group blade click **Delete Resource group**, enter the Resource Group Name and click **Delete**.  Repeat the process for any additional Resource Groups you may have created. **Failure to do this may cause issues with other labs.** |
+| --- |
 
 **Results**: You have now completed this lab.
 

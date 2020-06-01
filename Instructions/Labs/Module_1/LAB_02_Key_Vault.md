@@ -55,11 +55,13 @@ In this exercise, you will use PowerShell to create an Azure Key Vault.
 
 6.  In the Azure Portal open the **KeyVaultPSRG** Resource Group.
 
-7.  Click on the KeyVaultPS to examine what you have created.
+7.  Click on the Key Vault name to examine what you have created.
+
+    **Note**: For all future instructions replace KeyVaultPS with the name of your Key Vault.
 
 8. Click **Access Policies** > **+ Add Access Policy**
 
-9. Select **Key, Secret and Certificate Management** from **Configure from template (optional)**
+9.  Select **Key, Secret and Certificate Management** from **Configure from template (optional)**
 
 10. Click **Select Principal** and search for and then click on your account, then click on **Select**
 
@@ -273,31 +275,31 @@ In this task, you will create a blank Azure SQL Database, connect to it with SQL
 
 2.  Paste the following code into the query window and click Execute
 
-     ```sql
-     CREATE TABLE [dbo].[Patients](
-    
-     [PatientId] [int] IDENTITY(1,1),
+    ```sql
+    CREATE TABLE [dbo].[Patients](
 
-     [SSN] [char](11) NOT NULL,
+    [PatientId] [int] IDENTITY(1,1),
 
-     [FirstName] [nvarchar](50) NULL,
+    [SSN] [char](11) NOT NULL,
 
-     [LastName] [nvarchar](50) NULL,
+    [FirstName] [nvarchar](50) NULL,
 
-     [MiddleName] [nvarchar](50) NULL,
+    [LastName] [nvarchar](50) NULL,
 
-     [StreetAddress] [nvarchar](50) NULL,
+    [MiddleName] [nvarchar](50) NULL,
 
-     [City] [nvarchar](50) NULL,
+    [StreetAddress] [nvarchar](50) NULL,
 
-     [ZipCode] [char](5) NULL,
+    [City] [nvarchar](50) NULL,
 
-     [State] [char](2) NULL,
+    [ZipCode] [char](5) NULL,
 
-     [BirthDate] [date] NOT NULL 
+    [State] [char](2) NULL,
 
-     PRIMARY KEY CLUSTERED ([PatientId] ASC) ON [PRIMARY] );
-     ```
+    [BirthDate] [date] NOT NULL 
+
+    PRIMARY KEY CLUSTERED ([PatientId] ASC) ON [PRIMARY] );
+    ```
 
 
 3.  After the table is created successfully, expand **medical > tables > right-click dbo.Patients** and select **Encrypt Columns**.
@@ -328,7 +330,7 @@ In this task, you will create a blank Azure SQL Database, connect to it with SQL
 
 2.  Click **File > New > Project**
 
-3.  Next select **Visual C# > Console App (.NET Framework)** and provide the name **OpsEncrypt** in the location **C:\\** and then click **OK**.
+3.  Next select **C# > Console App (.NET Framework)** and provide the name **OpsEncrypt** in the location **C:\\** and then click **Create**.
 
 
 4.  **Right-Click** the **OpsEncrypt** project > click **Properties**.
@@ -342,7 +344,7 @@ In this task, you will create a blank Azure SQL Database, connect to it with SQL
 7.  Install the following **NuGet** packages by going to **Tools** > **NuGet Package Manager** > **Package Manager Console.**
 
     ```powershell
-    Install-Package     Microsoft.SqlServer.Management.AlwaysEncrypted.AzureKeyVaultProvider
+    Install-Package Microsoft.SqlServer.Management.AlwaysEncrypted.AzureKeyVaultProvider
     ```
 
     ```powershell

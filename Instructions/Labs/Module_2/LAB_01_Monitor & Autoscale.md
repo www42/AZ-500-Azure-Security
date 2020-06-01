@@ -32,7 +32,7 @@ Let's now go through a simple step-by-step walkthrough to create your first Auto
 
 1.  Notice the scale rule options that open as a context pane on the right side. By default, this sets the option to scale your instance count by 1 if the CPU percentage of the resource exceeds 70 percent. Leave it at its default values and click **Add**.
 
-1.  You've now created your first scale rule. Note that the UX recommends best practices and states that "It is recommended to have at least one scale in rule." To do so:
+1.  You've now created your first scale rule. Note that the UI recommends best practices and states that "It is recommended to have at least one scale in rule." To do so:
 
     - Click **Add a rule**.
 
@@ -45,6 +45,8 @@ Let's now go through a simple step-by-step walkthrough to create your first Auto
 1.  Click **Add**
 
 1.  Click **Save**.
+
+    **Note**:   If you receive an error "Microsoft.insights not registered" (Add button grayed out) go to your Subscription blade and under Resource Providers register "Microsoft.insights" and wait a few minutes for registration then retry. If it does not register, continue to to the next exercise.
 
 
 **Congratulations**! You've now successfully created your first scale setting to autoscale your web app based on CPU usage.
@@ -73,7 +75,7 @@ In addition to scale based on CPU, you can set your scale differently for specif
 
 1.  Setting the scale mode and the rules is the same as the default condition.
 1.  Select **Specify start/end dates** for the schedule.
-1.  Select the start/end dates and the start/end time for when the scale condition should be applied.
+1.  Select the start/end dates and the start/end time for when the scale condition should be applied.  Click **Save**.
 
 
 

@@ -29,7 +29,7 @@ Creation of more than one plan is not required for most organizations. A plan ca
 
 1.  Select **Create a resource** in the upper left corner of the Azure portal.
 2.  Select **Networking**, and then select **Virtual network**.
-3.  Enter or select your own values, of enter or select the following example values, accept the remaining defaults, and then select **Create**:
+3.  Enter or select your own values, of enter or select the following example values, accept the remaining defaults, and then select **Review + create**, then click **Create**:
 
     | Setting         | Value                                                        |
     | ---------       | ---------                                                    |
@@ -37,9 +37,13 @@ Creation of more than one plan is not required for most organizations. A plan ca
     | Subscription    | Select your subscription.                                    |
     | Resource group  | Select **Use existing**, and then select **myResourceGroup** |
     | Location        | East US                                                      |
-    | DDos protection | Select **Standard** and then under **DDoS protection**, select **myDdosProtectionPlan**. The plan you select can be in the same, or different subscription than the virtual network, but both subscriptions must be associated to the same Azure Active Directory tenant.|
+    | DDos protection | Select the **Security Tab**.  Select **Standard** and then under **DDoS protection**, select **myDdosProtectionPlan**. The plan you select can be in the same, or different subscription than the virtual network, but both subscriptions must be associated to the same Azure Active Directory tenant.|
 
- You cannot move a virtual network to another resource group or subscription when DDoS Standard is enabled for the virtual network. If you need to move a virtual network with DDoS Standard enabled, disable DDoS Standard first, move the virtual network, and then enable DDoS standard. After the move, the auto-tuned policy thresholds for all the protected public IP addresses in the virtual network are reset.
+    You cannot move a virtual network to another resource group or subscription when DDoS Standard is enabled for the virtual network. If you need to move a virtual network with DDoS Standard enabled, disable DDoS Standard first, move the virtual network, and then enable DDoS standard. After the move, the auto-tuned policy thresholds for all the protected public IP addresses in the virtual network are reset.
+
+1.  Click **All Services** and search for and select **Public IP addresses**.
+
+1.  Click **+ Add** and create an **IPv4** Public IP address in your **myResourceGroup** Resource Group.
 
 ### Task 3: Disable DDoS for a virtual network
 
@@ -65,25 +69,46 @@ You can select any of the available DDoS protection metrics to alert you when th
 
 1.  Select **All services** on the top, left of the portal.
 2.  Enter *Monitor* in the **Filter** box. When **Monitor** appears in the results, select it.
-3.  Select **Metrics** under **SHARED SERVICES**.
-4.  Enter, or select your own values, or enter the following example values, accept the remaining defaults, and then select **OK**:
+3.  Select **Alerts**.
+1.  On the **Monitor** blade click **Alerts** then click **+ New alert rule**.
+
+    ![Screenshot](../Media/Module-2/2020-05-09_12-05-49.png)
+
+1.  Click **Select resource**.
+
+1.  Select your Subscription and then in the Filter by resource type drop down, select **Public IP addresses** then select **myPublicIP** (or the name of your public ip address you created earlier) then click **Done**.
+
+    ![Screenshot](../Media/Module-2/2020-05-09_12-19-05.png)
+
+1.  Click **Select condition**.
+
+1.  Search for ***attack*** and select **Under DDos attack or not**.
+
+    ![Screenshot](../Media/Module-2/2020-05-09_12-20-54.png)
+
+1.  Scroll down the **Configure signal logic** blade and in the **Threashold value** enter **1** - **1** means you are under attack. **0** means you are not under attack.  Click **Done**.
+
+    ![Screenshot](../Media/Module-2/2020-05-09_12-23-19.png)
+
+
+1.  On the **Create alert rule** blade, click **Select action group** then click **+ Create action group.** and enter the following details.
 
     |Setting                  |Value                                                                                               |
     |---------                |---------                                                                                           |
-    |Name                     | myDdosAlert                                                                                        |
-    |Subscription             | Select the subscription that contains the public IP address you want to receive alerts for.        |
-    |Resource group           | Select the resource group that contains the public IP address you want to receive alerts for.      |
-    |Resource                 | Select the public IP address that contains the public IP address you want to receive alerts for. DDoS monitors public IP addresses assigned to resources within a virtual network.                   |
-    |Metric                   | Under DDoS attack or not                                                                            |
-    |Threshold                | 1 - **1** means you are under attack. **0** means you are not under attack.                         |
-    |Period                   | Select whatever value you choose.                                                                   |
-    |Notify via Email         | Check the checkbox                                                                                  |
-    |Additional administrator | Enter your email address if you're not an email owner, contributor, or reader for the subscription. |
+    |Action group name                     | **DDOS AG**  |
+    |Short Name| **ddosag**        |
+    |Subscription| Select your subscription        |
+    |Resource Group| Select **myResourceGroup**        |
+    |Action Name| DDOS Alert Email        |
+    |Action Type| Select **Email/SMS message/Push/Voice** then select email and enter a valid email address and click **OK**.|
 
-    Within a few minutes of attack detection, you receive an email from Azure Monitor metrics that looks similar to the following picture:
+1.  Back on the Add action group blade click **OK**.
+
+1.  Give the Alert a name and click **Create alert rule**.
+
+    Within a few minutes of an attack detection, you would receive an email from Azure Monitor metrics that looks similar to the following screenshot:
 
        ![Screenshot](../Media/Module-2/9c9dec1d-9a24-4948-b845-c265293eb5ac.png)
-
 
 ### Task 6: Use DDoS protection telemetry
 
@@ -94,11 +119,10 @@ Telemetry for an attack is provided through Azure Monitor in real time. The tele
 1.  Select **All services** on the top, left of the portal.
 
 2.  Enter *Monitor* in the **Filter** box. When **Monitor** appears in the results, select it.
-3.  Select **Metrics**, under **SHARED SERVICES**.
-4.  Select the **Subscription** and **Resource group** that contain the public IP address that you want telemetry for.
-5.  Select **Public IP Address** for **Resource type**, then select the specific public IP address you want telemetry for.
-6.  A series of **Available Metrics** appear on the left side of the screen. These metrics, when selected, are graphed in the **Azure Monitor Metrics Chart** on the overview screen.
-7.  Select the **aggregation** type as **Max**
+3.  Select **Metrics**.
+4.  Select the **Subscription** and **Resource group** that contain the public IP address that you want telemetry for  then click **Apply**.
+6.  A series of **Available Metrics** appear on the top of the screen. These metrics, when selected, are graphed in the **Azure Monitor Metrics Chart** on the overview screen.
+7.  Select the Public IP Address you created earlier and select the **Under DDoS attack or not** Metric and under **aggregation** select **Max**
 
  The metric names present different packet types, and bytes vs. packets, with a basic construct of tag names on each metric as follows:
 
@@ -128,7 +152,7 @@ Attack mitigation reports uses the Netflow protocol data which is aggregated to 
 3.  Under **SETTINGS**, select **Diagnostic Settings**.
 4.  Select the **Subscription** and **Resource group** that contain the public IP address you want to log.
 5.  Select **Public IP Address** for **Resource type**, then select the specific public IP address you want to log metrics for.
-6.  Select **Turn on diagnostics to collect the DDoSMitigationReports log** and then select as many of the following options as you require:
+6.  Select **+ Add diagnostic setting** to collect the DDoSMitigationReports log and give the Diagnostic setting the name **DDoSLog** and then select as many of the following options as you require then click **Save**:
 
     - **Archive to a storage account**: Data is written to an Azure Storage account. 
     - **Stream to an event hub**: Allows a log receiver to pick up logs using an Azure Event Hub. Event hubs enable integration with Splunk or other SIEM systems. 

@@ -36,7 +36,7 @@ To enable automatic provisioning of the Microsoft Monitoring Agent:
 3.  In the **Data Collection** tab, set **Auto provisioning** to **On**.
 4.  Exit the blade **without** saving.
 
-    **Note**: Ensure you do not click save otherwise the following exercises will function as expected.
+    **Note**: Ensure you do not click save otherwise the following exercises will not function as expected.
 
  
      ![Screenshot](../Media/Module-4/9818a400-e8c9-46cd-8c83-df666f4a31c1.png)
@@ -70,9 +70,9 @@ This exercise shows you how to install the Microsoft Monitoring Agent on a Windo
 
      ![Screenshot](../Media/Module-4/279abdec-9785-434c-bb0e-c90400f26a64.png)
  
-1.  Open the **Security Center** and click on **Compute & apps** then click on **VMs and Computers**.
+1.  Open the **Security Center** and click on **Compute & apps** then click on **VMs and Servers**.
 
-     ![Screenshot](../Media/Module-4/bbf6255b-0f13-4190-ac21-59f28e062d5e.png)
+     ![Screenshot](../Media/Module-4/2020-05-15_11-41-19.png)
  
 1.  Notice your Virtual Machine is now monitored.
 

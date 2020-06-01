@@ -28,7 +28,7 @@ In this lab, you will:
        - **Location**: East US
        - **Throughput Units**: 2
 
-4.  Click **Create**
+4.  Click Select **Review + Create** then select **Create**.
 
 ### Task 2: Create a storage account for later user
 
@@ -58,7 +58,7 @@ In this lab, you will:
 10.  Click **+ Container**
 11.  For the name type **events**
 12.  Set the **Public Access Level** to **Container**
-13.  Click **OK**
+13.  Click **Create**
 
 ### Task 3: Create new event hub
 
@@ -106,7 +106,7 @@ In this lab, you will:
 We will now download the scripts that will be used to create some events to be sent into the Event Hub, this will simulate the Event Hub receiving data from an application in the environment that has been written to communicate with Event Hubs, or from other systems that communicate with Azure Event Hubs. The script files have been developed and published on the PowerShell gallery
 
 
-1.  Open **PowerShell as administrator** (right click on the PowerShell icaon) and run the following command
+1.  Open **PowerShell as administrator** (right click on the PowerShell icon) and run the following command
 
     ```powershell
     install-script get-blobevents, send-blobevents
@@ -155,7 +155,7 @@ If you recieve a series if **401 Unauthorised errors** from the script check the
 
 5.  Select your **event hubs Storage Account**
 
-6.  Click **Blobs**
+6.  Click **Containers**
 
 7.  Open your **Blob containter** for events storage
 

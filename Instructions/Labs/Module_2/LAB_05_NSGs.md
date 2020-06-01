@@ -15,16 +15,21 @@ You can filter network traffic inbound to and outbound from a virtual network su
 
 1.  Select **+ Create a resource** on the upper left corner of the Azure portal.
 2.  Select **Networking**, and then select **Virtual network**.
-3.  Enter, or select, the following information, accept the defaults for the remaining settings, and then select **Create**:
+3.  Enter, or select, the following information, accept the defaults for the remaining settings, and then select **Review + create**, then click **Create**:
 
     | Setting                 | Value                                              |
     | ---                     | ---                                                |
     | Name                    | myVirtualNetwork                                   |
-    | Address space           | 10.0.0.0/16                                        |
     | Subscription            | Select your subscription.                          |
     | Resource group          | Select **Create new** and enter *myResourceGroup*. |
     | Location                | Select **East US**.                                |
-    | Subnet- Name            | mySubnet                                           |
+
+    Select the IP Addresses tab and enter the following values:
+
+    | Setting                 | Value                                              |
+    | ---                     | --- |
+    | Address space           | 10.0.0.0/16                                        |
+    | Subnet- Name            | Change the default subnet name to **mySubnet** and click **Save**                                           |
     | Subnet - Address range  | 10.0.0.0/24                                        |
 
 ### Task 2:  Create application security groups

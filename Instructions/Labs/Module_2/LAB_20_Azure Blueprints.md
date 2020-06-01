@@ -28,6 +28,8 @@ The first step in defining a standard pattern for compliance is to compose a blu
 
     Or, select **Create** from the **Getting started** page to go straight to creating a blueprint.
 
+    If prompted, select Start with a blank blueprint.
+
        ![Screenshot](../Media/Module-2/7d8f3904-0a07-40a6-b58c-53a47122cceb.png)
 
 1.  Provide a **Blueprint name** such as **MyBlueprint**. (Use up to 48 letters and numbers, but no spaces or special characters). Leave **Blueprint description** blank for now.
@@ -61,12 +63,11 @@ The first step in defining a standard pattern for compliance is to compose a blu
 
    1. Change **Type** to **Built-in**. In **Search**, enter **tag**.
 
-   1. Click out of **Search** for the filtering to occur. Select **Append tag and its default value
-      to resource groups**.
+   1. Click out of **Search** for the filtering to occur. Select **Append tag and its value to resource groups**.
 
    1. Select **Add** to add this artifact to the blueprint.
 
-1.  Select the row of the policy assignment **Append tag and its default value to resource groups**.
+1.  Select the row of the policy assignment **Append tag and its value to resource groups**.
 
 1.  The window to provide parameters to the artifact as part of the blueprint definition opens and allows setting the parameters for all assignments (static parameters) based on this blueprint instead of during assignment (dynamic parameters). This example uses dynamic parameters during blueprint assignment, so leave the defaults and select **Cancel**.
 
@@ -88,7 +89,7 @@ The first step in defining a standard pattern for compliance is to compose a blu
 
    1. On the **Template** tab in the editor box, paste the following Resource Manager template.  After you paste the template, select the **Parameters** tab and note that the template parameters **storageAccountType** and **location** were detected. Each parameter was  automatically detected and populated, but configured as a dynamic parameter.
 
-        ```json
+    ```json
               {
                   "$schema": "https://schema.management.azure.com/schemas/      2015-01-01/deploymentTemplate.json#",
                   "contentVersion": "1.0.0.0",
@@ -135,9 +136,9 @@ The first step in defining a standard pattern for compliance is to compose a blu
                       }
                   }
               }
-        ```
+    ```
 
-1. Clear the **storageAccountType** check box and note that the drop-down list contains only
+28. Under the Parameters tab, clear the **storageAccountType** check box and note that the drop-down list contains only
       values included in the Resource Manager template under **allowedValues**. Select the box to
       set it back to a dynamic parameter.
 
@@ -212,7 +213,7 @@ After a blueprint has been published, it can be assigned to a subscription. Assi
 
 1.  In the list of blueprints, right-click the one that you previously created (or select the ellipsis) and select **Assign blueprint**.
 
-1.  On the **Assign blueprint** page, in the **Subscription** drop-down list, select the subscriptions that you want to deploy this blueprint to.
+1.  On the **Assign blueprint** page, in the **Subscription** drop-down list, select the subscriptions that you want to deploy this blueprint to.  *Skip this step if you are using an Azure Pass or lab Hoster solution*
 
        If there are supported Enterprise offerings available from Azure Billing, a Create new link is activated under the Subscription box. Follow these steps:
 
@@ -245,7 +246,7 @@ After a blueprint has been published, it can be assigned to a subscription. Assi
 
 1.  Under **Managed Identity**, leave the default of **System assigned**.
 
-1.  For the subscription level role assignment **[User group or application name] : Contributor**,  search for and select a user, app, or group.
+1.  For the subscription level role assignment **[User group or application name] : Contributor**,  search for and select a user, app, or group.  *You may skip this step if you have no users or groups*
 
 1.  For the subscription level policy assignment, set **Tag Name** to **CostCenter** and the **Tag Value** to **ContosoIT**.
 
@@ -256,7 +257,7 @@ After a blueprint has been published, it can be assigned to a subscription. Assi
 
 1.  On the Azure Resource Manager template **StorageAccount**, select **Standard_GRS** for the **storageAccountType** parameter.
 
-1.  Read the information box at the bottom of the page, and then select **Assign**.
+1.  Read the information box at the bottom of the page, and then select **Assign**.  *Due to the limitations of lab environments you may receive an error.  This can be ignored and continue to the next task*
 
 ### Task 5: Track deployment of a blueprint
 

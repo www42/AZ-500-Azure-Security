@@ -14,6 +14,7 @@ You can use the Update Management solution to manage updates and patches for you
 1.  Click **Add**.
 1.  Name the resource group **RunBooks**
 1.  Change the region to **East US**
+2.  Click **Review + create**, then click **Create**.
 
 ### Task 2: Create Automation account
 
@@ -99,11 +100,11 @@ You can use the Update Management solution to manage updates and patches for you
 
 1.  Click **New Alert Rule**
 
-1.  Click **Add Condition**
+1.  Click **Select condition**
 
 1.  Select **Total Update Deployment Runs** from the list
 
-1.  Click the **Select * checkbox** next to **Runbook name** and **Status**
+1.  Click the Select * checkbox next to **Update Deployment Name and Status**
 
 1.  Under **Alert logic**, for **Threshold**, enter **1**
 
@@ -113,7 +114,7 @@ You can use the Update Management solution to manage updates and patches for you
 
 1.  Set the Severtiy to **Sev2**
 
-1.  Under **Action groups** select **Create**
+1.  Under **Action groups** click **Select action group** then click **Create action group**
 
 1.  Fill in the following details 
 
@@ -126,9 +127,9 @@ You can use the Update Management solution to manage updates and patches for you
 
 1.  Click **OK**
 
-1.  Click **Add** under Action Groups
+1.  Click **OK** under **Create Action Group**
 
-1.  Select your action group and click **Select**
+1.  Verify your action group is listed
 
 1.  Click **Create alert rule** 
 

@@ -100,7 +100,7 @@ In this task, you will verify that the policy assignment created in the previous
     -   Location: **East US**
     -   Address range: **10.0.0.0/24**
 
-    Leave the other settings at their default values and click **Create**.
+    Leave the other settings at their default values and click **Review + create**.
 
     ![Screenshot](../Media/Module-1/2019-12-30_18-35-10.png)
   
@@ -115,7 +115,7 @@ In this task, you will verify that the policy assignment created in the previous
 
 
 
-5.  Change the resource location to **UK South** as this is the location permitted by the policy. Click **Create** again and verify that the operation is successful.
+5.  Return back to the Basics tab and change the resource location to **UK South** as this is the location permitted by the policy. Click **Review + create** again and verify that the operation is successful.
 
 **Summary**
 
