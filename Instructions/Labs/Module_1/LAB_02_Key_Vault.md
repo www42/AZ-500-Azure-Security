@@ -114,7 +114,7 @@ In this exercise, you will use PowerShell to create an Azure Key Vault.
 2.  Next add the secret to the Vault with this command. Be sure to change the placeholder text to your vault name.
 
     ```powershell
-    $secret = Set-AZKeyVaultSecret -VaultName 'YourVaultName' -Name 'SQLPassword' -SecretValue $secretvalue
+    $secret = Set-AZKeyVaultSecret -VaultName 'YourVaultName' -Name 'SQLPassword' -SecretValue $secretvalue
     ```
 
 3.  Move back to the Azure Portal on **KeyVaultPS** and click **Secrets**
