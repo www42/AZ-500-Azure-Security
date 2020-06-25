@@ -24,7 +24,7 @@ In your policy, set:
 
 2.  In the Azure portal, on the hub menu, click **Azure Active Directory**.
 
-3.  In the **Properties** section, click **Manage Security defaults**.
+3.  In the **Manage** section, click **Properties**, and click **Manage Security defaults**.
 
 4.  Change the **Enable Security defaults** option to **No**. Under reason, select **My organisation is using Conditional Access**, and click **Save**. 
 
