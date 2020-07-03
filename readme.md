@@ -1,5 +1,7 @@
 # AZ-500 Azure Security
 
+**The next release of AZ-500 is now in Preview. There is a new lab repository to go with the content update - AZ500X-AzureSecurityTechnologies. The course will be officially updated on 17 July. At that time, this lab repository will no longer be used.**
+
 - **Are you a MCT?** - Have a look at our [GitHub User Guide for MCTs](https://microsoftlearning.github.io/MCT-User-Guide/)
 - **Need to manually build the lab instructions?** - Instructions are available in the [MicrosoftLearning/Docker-Build](https://github.com/MicrosoftLearning/Docker-Build) repository
 
