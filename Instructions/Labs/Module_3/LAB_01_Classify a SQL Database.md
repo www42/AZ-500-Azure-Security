@@ -8,15 +8,15 @@
 
 ### Task 1: Lab Setup
 
-1.  Open **PowerShell** and run the following command:
+1.  In your browser, navigate to the following URL to open the ARM template:
 
-     ```powershell
-    start "https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoftLearning%2FAZ-500-Azure-Security%2Fmaster%2FAllfiles%2FLabs%2FMod3_Lab01%2Fazuredeploy.json" 
-     ```
+    ```cli
+    https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoftLearning%2FAZ-500-Azure-Security%2Fmaster%2FAllfiles%2FLabs%2FMod3_Lab01%2Fazuredeploy.json
+    ```
 
-1.  Under **Resource group** click create new and use the default name "**Mod4Lab1**"
+1.  Under **Resource group** click create new and use the default name "**Mod3Lab1**"
 
-1.  You can use the default **populated SQL server** name with a **unique** string added to make a **globaly unique** name
+1.  You can use the default populated **SQL server name** with a **unique** string added to make a **globaly unique** name
 
 1.  Click **Purchase**. 
 warning
@@ -27,9 +27,9 @@ warning
 
 1.  Sign-in to the Azure portal.
 
-1.  **Select** the resource group of **Mod4Lab1**
+1.  **Select** the resource group of **Mod3Lab1**
 
-1.  Click **az500labserver**
+1.  Click **your unique SQL server name**
 
 1.  Under the **Security heading** in the **Azure SQL Database** pane, navigate to **Advanced Data Security**.
 
@@ -37,13 +37,13 @@ warning
 
 1.  **Click Save**
 
-1.  Return to the **Mod4Lab1** resource group
+1.  Return to the **Mod3Lab1** resource group
 
-1.  **Select** the **SQL databse AZ500LabDb (az500labserver/AZ500LabDb)**
+1.  **Select** the **SQL databse AZ500LabDb (your unique SQL server name/AZ500LabDb)**
 
 1.  **Click** Advanced Data Security again 
 
-1.  **Click** the bar at the top **Complete Advanced Data Security setup vy selecting a storage account for Vulnerability Assesment**
+1.  **Click** the bar at the top **Complete Advanced Data Security setup by selecting a storage account for Vulnerability Assesment**
 
 1.  Make sure the option for **Advanced Data Security** is set to **On** 
 
@@ -51,7 +51,8 @@ warning
 
 1.  **Click** create new
 
-1.  For the name use "**Mod4Lab1YOURNAME**" replacing **YOURNAME** with your name to make it unique but memorable
+1.  For the name use **mod3lab1yourname** replacing **yourname** with your name to make it unique but memorable
+
 
 1.  Click **OK**
 
@@ -59,7 +60,7 @@ warning
 
 1.  **Return** to the previous **Advanced Data Security** pane
 
-1.  **Select** the **Data discovery** and **classification** (**preview**) card.
+1.  **Select** the **Data discovery** and **classification** card.
 
 ## Exercise 2: Begin Classification
 
@@ -69,7 +70,7 @@ warning
 
 1.  To view and apply classification recommendations:
 
-    - View the list. To view the list of recommended column classifications, select the **recommendations** panel at the bottom of the window. (**Blue Bar**)   
+    - View the list. To view the list of recommended column classifications, select the **recommendations** panel at the top of the window. (**Blue Bar**)   
 
 1.  Click **Select all** in the top left to select all reccomendations
 

@@ -19,7 +19,7 @@ Lessons include:
 ### Task 1: Create a DNS zone
 
 1.  Sign in to the Azure Portal.
-2.  On the Hub menu, click **All services** and search for and select **DNS zone**.
+2.  On the Hub menu, click **All services** and search for and select **DNS zones**.
 
      ![Screenshot](../Media/Module-2/2c8b996d-d6b5-4cfa-9832-55b2479aa5fe.png)
 

@@ -13,18 +13,23 @@ You can filter network traffic inbound to and outbound from a virtual network su
 
 ### Task 1:  Create a virtual network
 
-1.  Select **+ Create a resource** on the upper, left corner of the Azure portal.
+1.  Select **+ Create a resource** on the upper left corner of the Azure portal.
 2.  Select **Networking**, and then select **Virtual network**.
-3.  Enter, or select, the following information, accept the defaults for the remaining settings, and then select **Create**:
+3.  Enter, or select, the following information, accept the defaults for the remaining settings, and then select **Review + create**, then click **Create**:
 
     | Setting                 | Value                                              |
     | ---                     | ---                                                |
     | Name                    | myVirtualNetwork                                   |
-    | Address space           | 10.0.0.0/16                                        |
     | Subscription            | Select your subscription.                          |
     | Resource group          | Select **Create new** and enter *myResourceGroup*. |
     | Location                | Select **East US**.                                |
-    | Subnet- Name            | mySubnet                                           |
+
+    Select the IP Addresses tab and enter the following values:
+
+    | Setting                 | Value                                              |
+    | ---                     | --- |
+    | Address space           | 10.0.0.0/16                                        |
+    | Subnet- Name            | Change the default subnet name to **mySubnet** and click **Save**                                           |
     | Subnet - Address range  | 10.0.0.0/24                                        |
 
 ### Task 2:  Create application security groups
@@ -33,7 +38,7 @@ You can filter network traffic inbound to and outbound from a virtual network su
 An application security group enables you to group together servers with similar functions, such as web servers.
 
 
-1.  Select **+ Create a resource** on the upper, left corner of the Azure portal.
+1.  Select **+ Create a resource** on the upper left corner of the Azure portal.
 2.  In the **Search the Marketplace** box, enter *Application security group*. When **Application security group** appears in the search results, select it, select **Application security group** again under **Everything**, and then select **Create**.
 3.  Enter, or select, the following information, and then select **Create**:
 
@@ -55,7 +60,7 @@ An application security group enables you to group together servers with similar
 
 ### Task 3:  Create a network security group
 
-1.  Select **+ Create a resource** on the upper, left corner of the Azure portal.
+1.  Select **+ Create a resource** on the upper left corner of the Azure portal.
 2.  Select **Networking**, and then select **Network security group**.
 3.  Enter, or select, the following information, and then select **Create**:
 
@@ -101,7 +106,7 @@ An application security group enables you to group together servers with similar
 
 ### Task 6:  Create virtual machines
 
-1.  Select **+ Create a resource** found on the upper, left corner of the Azure portal.
+1.  Select **+ Create a resource** found on the upper left corner of the Azure portal.
 2.  Select **Compute**, and then select **Windows Server 2016 Datacenter**.
 3.  Enter, or select, the following information, and accept the defaults for the remaining settings:
 
@@ -122,35 +127,35 @@ An application security group enables you to group together servers with similar
     |Setting|Value|
     |---|---|
     |Virtual network |Select **myVirtualNetwork**.|
-    |NIC network security group |Select **Advanced**.|
-    |Public Inbound Ports|Select **None**. |
+    |NIC network security group |Select **None**.|
 
-6.  Select **Review + Create** at the bottom, left corner, select **Create** to start VM deployment.
+6.  Under **Management**, select **Off** for **Boot diagnostics**.  
+7.  Select **Review + Create** at the bottom left corner, select **Create** to start VM deployment.
 
 ### Task 7:  Create the second VM
 
-Complete above steps 1-6 again, but in step 3, name the VM *myVmMgmt*. The VM takes a few minutes to deploy. Do not continue to the next step until the VM is deployed.
+Complete above steps 1-7 again, but in step 3, name the VM *myVmMgmt*. The VM takes a few minutes to deploy. Do not continue to the next step until the VM is deployed.
 
 ### Task 8:  Associate network interfaces to an ASG
 
 
-When the portal created the VMs, it created a network interface for each VM, and attached the network interface to the VM. Add the network interface for each VM to one of the application security groups you created previously:
+When the portal created the VMs, it created a network interface for each VM and attached the network interface to the VM. Add the network interface for each VM to one of the application security groups you created previously:
 
 
 1.  In the *Search resources, services, and docs* box at the top of the portal, begin typing *myVmWeb*. When the **myVmWeb** VM appears in the search results, select it.
-2.  Under **SETTINGS**, select **Networking**.  Select **Configure the application security groups**, select **myAsgWebServers** for **Application security groups**, and then select **Save**.
+2.  Under **SETTINGS**, select **Networking**.  Select **Application security groups**, then **Configure the application security groups**, then select **myAsgWebServers** for **Application security groups**, and then select **Save**.
 
 3.  Complete steps 1 and 2 again, searching for the **myVmMgmt** VM and selecting the  **myAsgMgmtServers** ASG.
 
 ### Task 9:  Test traffic filters
 
 1.  Connect to the *myVmMgmt* VM. Enter *myVmMgmt* in the search box at the top of the portal. When **myVmMgmt** appears in the search results, select it. Select the **Connect** button.
-2.  Select **Download RDP file**.
+2.  Select **RDP**, then **Download RDP file**.
 3.  Open the downloaded rdp file and select **Connect**. Enter the user name and password you specified when creating the VM. You may need to select **More choices**, then **Use a different account**, to specify the credentials you entered when you created the VM.
 4.  Select **OK**.
-5.  You may receive a certificate warning during the sign-in process. If you receive the warning, select **Yes** or **Continue**, to proceed with the connection.
+5.  You may receive a certificate warning during the sign-in process. If you receive the warning, select **Yes** or **Continue** to proceed with the connection.
 
-    The connection succeeds, because port 3389 is allowed inbound from the internet to the *myAsgMgmtServers* application security group that the network interface attached to the *myVmMgmt* VM is in.
+    The connection succeeds because port 3389 is allowed inbound from the internet to the *myAsgMgmtServers* application security group that the network interface attached to the *myVmMgmt* VM is in.
 
 6.  Connect to the *myVmWeb* VM from the *myVmMgmt* VM by entering the following command in a PowerShell session:
 
@@ -158,7 +163,7 @@ When the portal created the VMs, it created a network interface for each VM, and
     mstsc /v:myVmWeb
     ```
 
-    You are able to connect to the myVmWeb VM from the myVmMgmt VM because VMs in the same virtual network can communicate with each other over any port, by default. You can't however, create a remote desktop connection to the *myVmWeb* VM from the internet, because the security rule for the *myAsgWebServers* doesn't allow port 3389 inbound from the internet and inbound traffic from the Internet is denied to all resources, by default.
+    You are able to connect to the myVmWeb VM from the myVmMgmt VM because VMs in the same virtual network can communicate with each other over any port, by default. You can't, however, create a remote desktop connection to the *myVmWeb* VM from the internet because the security rule for the *myAsgWebServers* doesn't allow port 3389 inbound from the internet, and inbound traffic from the Internet is denied to all resources, by default.
 
 7.  To install Microsoft IIS on the *myVmWeb* VM, enter the following command from a PowerShell session on the *myVmWeb* VM:
 
@@ -172,7 +177,7 @@ When the portal created the VMs, it created a network interface for each VM, and
 
        ![Screenshot](../Media/Module-2/e3bbd69d-95d0-4b3b-98ce-714d30b4d1ef.png)
   
-11.  To confirm that you can access the *myVmWeb* web server from the internet, open an internet browser on your computer and browse to `http://<public-ip-address-from-previous-step>`. You see the IIS welcome screen, because port 80 is allowed inbound from the internet to the *myAsgWebServers* application security group that the network interface attached to the *myVmWeb* VM is in.
+11.  To confirm that you can access the *myVmWeb* web server from the internet, open an internet browser on your computer and browse to `http://<public-ip-address-from-previous-step>`. You see the IIS welcome screen because port 80 is allowed inbound from the internet to the *myAsgWebServers* application security group that the network interface attached to the *myVmWeb* VM is in.
 
 
 | WARNING: Prior to continuing you should remove all resources used for this lab.  To do this in the **Azure Portal** click **Resource groups**.  Select any resources groups you have created.  On the resource group blade click **Delete Resource group**, enter the Resource Group Name and click **Delete**.  Repeat the process for any additional Resource Groups you may have created. **Failure to do this may cause issues with other labs.** |

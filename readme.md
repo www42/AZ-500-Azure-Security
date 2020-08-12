@@ -1,4 +1,6 @@
-# AZ-500 Azure Security
+# AZ-500 Azure Security (old)
+
+**A new version of AZ-500 was released 17 July There is a new lab repository to go with the content update - AZ500X-AzureSecurityTechnologies. Please move to this new version of the course and labs.**
 
 - **Are you a MCT?** - Have a look at our [GitHub User Guide for MCTs](https://microsoftlearning.github.io/MCT-User-Guide/)
 - **Need to manually build the lab instructions?** - Instructions are available in the [MicrosoftLearning/Docker-Build](https://github.com/MicrosoftLearning/Docker-Build) repository
@@ -11,7 +13,7 @@ To support the new changes, we introduced a new AZ-500 GitHub repository, starti
 
 *	We are publishing the lab instructions and lab files on GitHub to allow for interaction between the course authors and MCTs. We hope this will help  keep the content current as the Azure platform changes.
 
-*	This is a GitHub repository for the AZ-500, Microsoft Azure Security course. 
+*	This is an old GitHub repository for the AZ-500, Microsoft Azure Security course. 
 
 *	Within each repository there are lab guides in the Markdown format in the Instructions folder. If appropriate, there are also additional files that are needed to complete the lab within the Allfiles\Labfiles folder. Not every course has corresponding lab files. 
 

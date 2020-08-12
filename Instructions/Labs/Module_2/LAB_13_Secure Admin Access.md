@@ -19,9 +19,9 @@ Your public key can be shared with anyone, but only you (or your local security 
 
 1.  Open a browser and navigate to the following URL:
 
-     ```cli
+    ```cli
     http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html 
-     ```
+    ```
 
 1.  Download and install the **Putty Installer**.
 
@@ -104,7 +104,7 @@ One way to make an SSH connection to your Linux VM from Windows is to use an SSH
 1.  In the **Azure Portal Hub Menu** click **Virtual Machines** then select your **myVM-Linux** machine.
 
 
-1.  In the Overview blade, note down or copy the **Public IP Address** of your virtual machine.
+1.  In the Overview blade, note down or copy the **Public IP Address** of your virtual machine *If this does not display, refresh your browser*.
 
     **Note:** Your public IP will be different to what is shown in the screenshot.
 
@@ -127,13 +127,15 @@ One way to make an SSH connection to your Linux VM from Windows is to use an SSH
 
 5.  Click **Yes** to continue on the pop up.
 
-1.  On the `login as` screen enter **localadmin** and press **Enter**.
+1.  On the `login as` screen enter **localadmin** and press **Enter** then enter the password Pa55w.rd1234 and press **Enter**. ***Note**: As you type the password the curser will not move*
 
      ![Screenshot](../Media/Module-2/57d91a3f-eee7-4acb-8c90-696c826102d5.png)
  
-1.  You are now logged into the Linux VM hosted in Azure.
+2.  You are now logged into the Linux VM hosted in Azure.
 
      ![Screenshot](../Media/Module-2/d79b17ca-2036-4ef8-8063-15b442cabb9a.png)
 
+| WARNING: Prior to continuing you should remove all resources used for this lab.  To do this in the **Azure Portal** click **Resource groups**.  Select any resources groups you have created.  On the resource group blade click **Delete Resource group**, enter the Resource Group Name and click **Delete**.  Repeat the process for any additional Resource Groups you may have created. **Failure to do this may cause issues with other labs.** |
+| --- |
 
 **Results**: You have now completed this Lab.

@@ -1,4 +1,4 @@
-# Module 1 - Lab 2: Implementing Secure Data by setting up Always Encrypted (Key Vault)
+# Module 1 - Lab 2: Key Vault (Implementing Secure Data by setting up Always Encrypted)
 
 
 **Scenario**
@@ -20,7 +20,7 @@ In this lab, you will get started with Azure Key Vault to create a hardened cont
 
 1.  To download the latest version of SQL Management Studio required for this lab visit the following link and select download SQL Management Studio **`https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017`**
 
-
+     **Note:** You do not need to wait for the SQL Management Studio to install   before continuing.
 
 ### Task 2: Use PowerShell to create a Key Vault
 
@@ -32,22 +32,22 @@ In this exercise, you will use PowerShell to create an Azure Key Vault.
 
 2.  Use the following command to authenticate to Azure using the account for your Azure subscription.
 
-     ```powershell
-    Login-AzureRMAccount
-     ```
+    ```powershell
+    Login-AzAccount
+    ```
 
 4.  Create a new Resource Group 
 
-     ```powershell
-    New-AzureRmResourceGroup -Name 'KeyVaultPSRG' -Location 'eastus'
-     ```
+    ```powershell
+    New-AzResourceGroup -Name 'KeyVaultPSRG' -Location 'eastus'
+    ```
 
 
-5.  Create a key vault in the resource group. **The VaultName must be unique.**
+5.  Create a key vault in the resource group. **The VaultName must be unique therefore change <keyvault name> to something unique.**
 
-     ```powershell
-    New-AzureRmKeyVault -VaultName 'KeyVaultPS' -ResourceGroupName    'KeyVaultPSRG' -Location 'eastus'
-     ```
+    ```powershell
+    New-AzKeyVault -VaultName '<keyvault name>' -ResourceGroupName 'KeyVaultPSRG' -Location 'eastus'
+    ```
 
     **Note**: The output of this shows important pieces of information: Vault Name in this case that is KeyVaultPS and the Vault URI: `https://KeyVaultPS.vault.azure.net`
 
@@ -55,13 +55,15 @@ In this exercise, you will use PowerShell to create an Azure Key Vault.
 
 6.  In the Azure Portal open the **KeyVaultPSRG** Resource Group.
 
-7.  Click on the KeyVaultPS to examine what you have created.
+7.  Click on the Key Vault name to examine what you have created.
+
+    **Note**: For all future instructions replace KeyVaultPS with the name of your Key Vault.
 
 8. Click **Access Policies** > **+ Add Access Policy**
 
-9. Select **Key, Secret and Certificate Management** from **Configure from template (optional)**
+9.  Select **Key, Secret and Certificate Management** from **Configure from template (optional)**
 
-10. Click **Select Pricipal** and search for and then click on your account, then click on **Select**
+10. Click **Select Principal** and search for and then click on your account, then click on **Select**
 
 11. Click **Add** and then **Save**
 
@@ -71,9 +73,9 @@ In this exercise, you will use PowerShell to create an Azure Key Vault.
 
 2.  Add a software-protected key to the Key Vault using this command. Be sure to change the placeholder text to your vault name.
 
-     ```powershell
-    $key = Add-AzureKeyVaultKey -VaultName '<YourVaultName>' -Name 'MyLabKey' -Destination 'Software'
-     ```
+    ```powershell
+    $key = Add-AZKeyVaultKey -VaultName '<YourVaultName>' -Name 'MyLabKey' -Destination 'Software'
+    ```
 
 3.  Move back to **KeyVaultPS** in the Azure portal. Click **Keys** under Settings in the left navigation pane.
 
@@ -88,32 +90,32 @@ In this exercise, you will use PowerShell to create an Azure Key Vault.
 
 7.  Move back to the PowerShell window. To display the current version of the key, enter the following command.
 
-     ```powershell
+    ```powershell
     $Key.key.kid
-     ```
+    ```
 
 
 8.  To view the Key you just created you can use the Get-AzureKeyVaultKey cmdlet. Be sure to change the placeholder text to your vault name.
 
-     ```powershell
-    Get-AzureKeyVaultKey -VaultName '<YourVaultName>'
-     ```
+    ```powershell
+    Get-AZKeyVaultKey -VaultName '<YourVaultName>'
+    ```
 
 
 ### Task 4: Add a Secret to Key Vault
 
 1.  Next, you will add a secret to the **KeyVaultPS**. To do this, add a variable named **$secretvalue** using the following code.
 
-     ```powershell
+    ```powershell
     $secretvalue = ConvertTo-SecureString 'Pa55w.rd1234' -AsPlainText -Force
-     ```
+    ```
 
 
 2.  Next add the secret to the Vault with this command. Be sure to change the placeholder text to your vault name.
 
-     ```powershell
-    $secret = Set-AzureKeyVaultSecret -VaultName '<YourVaultName>' -Name      'SQLPassword' -SecretValue $secretvalue
-     ```
+    ```powershell
+    $secret = Set-AZKeyVaultSecret -VaultName 'YourVaultName' -Name 'SQLPassword' -SecretValue $secretvalue
+    ```
 
 3.  Move back to the Azure Portal on **KeyVaultPS** and click **Secrets**
 
@@ -130,9 +132,9 @@ In this exercise, you will use PowerShell to create an Azure Key Vault.
 
 8.  To view the Secret, use the Get-AzureKeyVaultSecret cmdlet. Be sure to change the placeholder text to your vault name.
 
-     ```powershell
-    Get-AzureKeyVaultSecret -VaultName '<YourVaultName>'
-     ```
+    ```powershell
+    Get-AZKeyVaultSecret -VaultName 'YourVaultName'
+    ```
 
 ### Task 5: Enable a Client Application
 
@@ -183,21 +185,21 @@ You will enable your client application to access the Azure SQL Database service
 8.  Run the following Powershell in the **Powershell ISE** to set the sqlApp key permissions replacing the placeholder text with **your account details**
 
     
-     ```powershell
+    ```powershell
     $subscriptionName = '[Azure_Subscription_Name]'
     $applicationId = '[Azure_AD_Application_ID]'
     $resourceGroupName = '[Resource_Group_with_KeyVault]'
     $location = '[Azure_Region_of_KeyVault]'
     $vaultName = '[KeyVault_Name]' 
-     ```
+    ```
     
-     ```powershell
-    Login-AzureRmAccount
-     ```
+    ```powershell
+    Login-AzAccount
+    ```
     
-     ```powershell
-    Set-AzureRmKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $resourceGroupName -ServicePrincipalName $applicationId -PermissionsToKeys get,wrapKey,unwrapKey,sign,verify,list
-     ```
+    ```powershell
+    Set-AZKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $resourceGroupName -ServicePrincipalName $applicationId -PermissionsToKeys get,wrapKey,unwrapKey,sign,verify,list
+    ```
 
 
  
@@ -254,17 +256,17 @@ In this task, you will create a blank Azure SQL Database, connect to it with SQL
 
 
 
-4.  On the LABVM open SQL Server Management Studio. Connect to the Server using these properties for the **Connect to Server** dialog.
+4.  Open SQL Server Management Studio. Connect to the Server using these properties for the **Connect to Server** dialog.
 
-  - Server Type: **Database Engine**
+    - Server Type: **Database Engine**
 
-  - Server Name: **[found on the Database Overview Blade]**
+    - Server Name: **[found on the Database Overview Blade]**
 
-  - Authentication: **SQL Server Authentication**
+    - Authentication: **SQL Server Authentication**
 
-  - Login: **demouser**
+    - Login: **demouser**
 
-  - Password: **Pa55w.rd1234**
+    - Password: **Pa55w.rd1234**
 
 
 ### Task 9: Create and Encrypt a Table
@@ -273,33 +275,31 @@ In this task, you will create a blank Azure SQL Database, connect to it with SQL
 
 2.  Paste the following code into the query window and click Execute
 
-     ```sql
+    ```sql
     CREATE TABLE [dbo].[Patients](
-    
-        [PatientId] [int] IDENTITY(1,1),
 
-        [SSN] [char](11) NOT NULL,
+    [PatientId] [int] IDENTITY(1,1),
 
-        [FirstName] [nvarchar](50) NULL,
+    [SSN] [char](11) NOT NULL,
 
-        [LastName] [nvarchar](50) NULL,
+    [FirstName] [nvarchar](50) NULL,
 
-        [MiddleName] [nvarchar](50) NULL,
+    [LastName] [nvarchar](50) NULL,
 
-        [StreetAddress] [nvarchar](50) NULL,
+    [MiddleName] [nvarchar](50) NULL,
 
-        [City] [nvarchar](50) NULL,
+    [StreetAddress] [nvarchar](50) NULL,
 
-        [ZipCode] [char](5) NULL,
+    [City] [nvarchar](50) NULL,
 
-        [State] [char](2) NULL,
+    [ZipCode] [char](5) NULL,
 
-        [BirthDate] [date] NOT NULL 
+    [State] [char](2) NULL,
 
-        PRIMARY KEY CLUSTERED ([PatientId] ASC) ON [PRIMARY] );
+    [BirthDate] [date] NOT NULL 
 
-
-     ```
+    PRIMARY KEY CLUSTERED ([PatientId] ASC) ON [PRIMARY] );
+    ```
 
 
 3.  After the table is created successfully, expand **medical > tables > right-click dbo.Patients** and select **Encrypt Columns**.
@@ -326,32 +326,32 @@ In this task, you will create a blank Azure SQL Database, connect to it with SQL
 
 ### Task 10: Build a Console Application to work with Encrypted Columns
 
-1.  On the LABVM Open Visual Studio 2019 and Sign in using your Azure account.
+1.  Open Visual Studio 2019 and Sign in using your Azure account.
 
 2.  Click **File > New > Project**
 
-3.  Next select **Visual C# > Console App (.NET Framework)** and provide the name **OpsEncrypt** in the location **C:\** and then click **OK**.
+3.  Next select **C# > Console App (.NET Framework)** and provide the name **OpsEncrypt** in the location **C:\\** and then click **Create**.
 
 
 4.  **Right-Click** the **OpsEncrypt** project > click **Properties**.
 
 
 
-5.  Change the **Target Framework** to **.NET Framework 4.6.2.** Click **Yes** when prompted to change the **Target Framework.**
+5.  Change the **Target Framework** to **.NET Framework 4.7.2.** Click **Yes** when prompted to change the **Target Framework.**
 
 
 
 7.  Install the following **NuGet** packages by going to **Tools** > **NuGet Package Manager** > **Package Manager Console.**
 
-     ```powershell
-    Install-Package     Microsoft.SqlServer.Management.AlwaysEncrypted.AzureKeyVaultProvider
-     ```
+    ```powershell
+    Install-Package Microsoft.SqlServer.Management.AlwaysEncrypted.AzureKeyVaultProvider
+    ```
 
-     ```powershell
+    ```powershell
     Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
-     ```
+    ```
 
-1.  Open the **program.cs** file in notepad from Allfiles\Labs\Mod1_Lab02 and copy the code.
+1.  Open the **program.cs** file in notepad from Allfiles\\Labs\\Mod1_Lab02 and copy the code.
 
 8.  Replace the code in **Program.cs** in Visual Studio with the code you just copied.
 
@@ -360,7 +360,7 @@ In this task, you will create a blank Azure SQL Database, connect to it with SQL
 10.  **Click** the **Start Button** in **Visual Studio**.
 
 
-1.  **The Console Application** will **Build** and then start. First it will add data to the application and then ask for your password.
+1.  **The Console Application** will **Build** and then start. First it will ask for your password, then the app will add data to the database.
 
     - Server Password: **Pa55w.rd1234**
 
@@ -370,16 +370,16 @@ In this task, you will create a blank Azure SQL Database, connect to it with SQL
 
 1.  Run the following query to see the data that was loaded into the database is encrypted.
 
-     ```sql
+    ```sql
     SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
-     ```
+    ```
 
 
-1.  Now, move back to the console application you will be asked to **Enter** a **Valid SSN**. This will query the encrypted column for the data. Notice that with the key called from the Key Vault now the data is unencrypted and shown to the console window.
+1.  Now, move back to the console application where you will be asked to **Enter** a **Valid SSN**. This will query the encrypted column for the data. Notice that with the key called from the Key Vault, now the data is unencrypted and shown to the console window.
 
-     ```sql
+    ```sql
     999-99-0003
-     ```
+    ```
 
 1.  To **Exit** you press enter.
 
@@ -387,6 +387,6 @@ In this task, you will create a blank Azure SQL Database, connect to it with SQL
 | WARNING: Prior to continuing you should remove all resources used for this lab.  To do this in the **Azure Portal** click **Resource groups**.  Select any resources groups you have created.  On the resource group blade click **Delete Resource group**, enter the Resource Group Name and click **Delete**.  Repeat the process for any additional Resource Groups you may have created. **Failure to do this may cause issues with other labs.** |
 | --- |
 
-**Results** : You have now completed this course.
+**Results** : You have now completed this Lab.
 
 

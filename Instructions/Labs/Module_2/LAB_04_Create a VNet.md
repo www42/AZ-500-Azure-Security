@@ -26,15 +26,20 @@ A virtual network is the fundamental building block for your private network in 
 
     | Setting | Value |
     | ------- | ----- |
-    | Name | Enter *myVirtualNetwork*. |
-    | Address space | Enter *10.1.0.0/16*. |
     | Subscription | Select your subscription.|
     | Resource group | Select **Create new**, enter *myResourceGroup*, then select **OK**. |
+    | Name | Enter *myVirtualNetwork*. |
     | Location | Select **East US**.|
+
+    Select the IP Addresses tab and enter the following values:
+
+    | Setting | Value |
+    | ------- | ----- |
+    | Address space | Enter *10.1.0.0/16*. |
     | Subnet - Name | Enter *myVirtualSubnet*. |
     | Subnet - Address range | Enter *10.1.0.0/24*. |
 
-1.  Leave the rest as default and select **Create**.
+1.  Leave the rest as default and select **Review + create**, then click **Create**.
 
 ### Task 2: Create virtual machines
 
@@ -42,7 +47,7 @@ A virtual network is the fundamental building block for your private network in 
 Create two VMs in the virtual network:
 
 
-1.  On the upper-left side of the screen, select **Create a resource** > **Compute** > **Windows Server 2019 Datacenter**.
+1.  On the upper-left side of the screen, select **Create a resource** > **Compute** > **Virtual machine**.
 
 1.  In **Create a virtual machine - Basics**, enter or select this information:
 
@@ -55,14 +60,15 @@ Create two VMs in the virtual network:
     | Virtual machine name | Enter *myVm1*. |
     | Region | Select **East US**. |
     | Availability options | Leave the default **No infrastructure redundancy required**. |
-    | Image | Leave the default **Windows Server 2019 Datacenter**. |
-    | Size | Leave the default **Standard DS1 v2**. |
+    | Image | Select **Windows Server 2019 Datacenter**. |
+    | Size | Select **Standard DS1 v2**. |
     | **ADMINISTRATOR ACCOUNT** |  |
     | Username | Enter a username of your choosing. |
     | Password | Pa55w.rd1234 |
     | Confirm Password | Reenter password. |
     | **INBOUND PORT RULES** |  |
-    | Public inbound ports | Leave the default **None**. |
+    | Public inbound ports | Select **Allow selected ports**. |
+    | Select inbound ports | Select **HTTP** and **RDP**.
     | **SAVE MONEY** |  |
     | Already have a Windows license? | Leave the default **No**. |
 
@@ -76,9 +82,8 @@ Create two VMs in the virtual network:
     | ------- | ----- |
     | Virtual network | Leave the default **myVirtualNetwork**. |
     | Subnet | Leave the default **myVirtualSubnet (10.1.0.0/24)**. |
-    | Public IP | Leave the default **(new) myVm-ip**. |
-    | Public inbound ports | Select **Allow selected ports**. |
-    | Select inbound ports | Select **HTTP** and **RDP**.
+    | Public IP | Leave the default **(new) myVm1-ip**. |
+   
 
 1.  Select **Next : Management**.
 
@@ -120,10 +125,7 @@ After you've created *myVm1*, connect to the internet.
 
 1.  Select the **Connect** button.
 
-
-    After selecting the **Connect** button, **Connect to virtual machine** opens.
-
-1.  Select **Download RDP File**. Azure creates a Remote Desktop Protocol (*.rdp*) file and downloads it to your computer.
+1.  Select **RDP**, then **Download RDP File**. Azure creates a Remote Desktop Protocol (*.rdp*) file and downloads it to your computer.
 
 1.  Open the downloaded *.rdp* file.
 
@@ -137,8 +139,6 @@ After you've created *myVm1*, connect to the internet.
 1.  Select **OK**.
 
 1.  You may receive a certificate warning during the sign in process. If you receive a certificate warning, select **Yes** or **Continue**.
-
-1.  Once the VM desktop appears, minimize it to go back to your local desktop.
 
 ### Task 5: Communicate between VMs
 
@@ -159,7 +159,7 @@ After you've created *myVm1*, connect to the internet.
     Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
     ```
 
-    The `ping` fails, because `ping` uses the Internet Control Message Protocol (ICMP). By default, ICMP isn't allowed through the Windows firewall.
+    The `ping` fails because `ping` uses the Internet Control Message Protocol (ICMP). By default, ICMP isn't allowed through the Windows firewall.
 
 1.  To allow *myVm2* to ping *myVm1* in a later step, enter this command:
 
@@ -190,7 +190,7 @@ After you've created *myVm1*, connect to the internet.
         Minimum = 0ms, Maximum = 1ms, Average = 0ms
     ```
 
-    You receive replies from *myVm1*, because you allowed ICMP through the Windows firewall on the *myVm1* VM in step 3.
+    You receive replies from *myVm1* because you allowed ICMP through the Windows firewall on the *myVm1* VM in step 3.
 
 1.  Close the remote desktop connection to *myVm2*.
 

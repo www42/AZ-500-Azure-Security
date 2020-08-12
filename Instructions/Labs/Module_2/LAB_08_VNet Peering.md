@@ -17,18 +17,22 @@ You can connect virtual networks to each other with virtual network peering. The
 
 1.  Select **+ Create a resource** on the upper, left corner of the Azure portal.
 2.  Select **Networking**, and then select **Virtual network**.
-3.  Enter, or select, the following information, accept the defaults for the remaining settings, and then select **Create**:
+3.  Enter, or select, the following information, accept the defaults for the remaining settings, and then select Click **Review + create**, then click **Create**:
 
     |Setting|Value|
     |---|---|
     |Name|myVirtualNetwork1|
-    |Address space|10.0.0.0/16|
     |Subscription| Select your subscription.|
     |Resource group| Select **Create new** and enter *myResourceGroup*.|
     |Location| Select **East US**.|
+
+    Select the IP Addresses tab and enter the following values:
+
+    |Setting|Value|
+    |---|---|
+    |Address space|10.0.0.0/16|
     |Subnet Name|Subnet1|
     |Subnet Address range|10.0.0.0/24|
-
 
 4.  Complete steps 1-3 again, with the following changes:
 
@@ -53,10 +57,7 @@ You can connect virtual networks to each other with virtual network peering. The
     |Virtual network|myVirtualNetwork2 - To select the *myVirtualNetwork2* virtual network, select **Virtual network**, then select **myVirtualNetwork2**. You can select a virtual network in the same region or in a different region.|
     |Name|myVirtualNetwork2-myVirtualNetwork1|
 
-
-    The **PEERING STATUS** is *Initiated*, as shown in the following screenshot:
-
-
+    The **PEERING STATUS** is *Initiated*.
 
     If you don't see the status, refresh your browser.
 
@@ -67,7 +68,7 @@ You can connect virtual networks to each other with virtual network peering. The
 ### Task 3: Create virtual machines
 
 1.  Select **+ Create a resource** on the upper, left corner of the Azure portal.
-2.  Select **Compute**, and then select **Windows Server 2016 Datacenter**. You can select a different operating system, but the remaining steps assume you selected **Windows Server 2016 Datacenter**. 
+2.  Select **Compute** > **Virtual Machine**. When creating the VM, select **Windows Server 2016 Datacenter** as the operating system. 
 3.  Enter, or select, the following information for **Basics**, accept the defaults for the remaining settings, and then select **Create**:
 
     |Setting|Value|
@@ -100,10 +101,10 @@ You can connect virtual networks to each other with virtual network peering. The
 
 1.  Complete the above steps again, with the following changes (The VMs take a few minutes to create. Do not continue with the remaining  steps until both VMs are created.):
 
- |Setting|Value|
- |---|---|
- |Name | myVM2|
- |Virtual network | myVirtualNetwork2|
+    |Setting|Value|
+    |---|---|
+    |Name | myVM2|
+    |Virtual network | myVirtualNetwork2|
 
 
 
@@ -111,7 +112,7 @@ You can connect virtual networks to each other with virtual network peering. The
 ### Task 4: Communicate between VMs
 
 1.  In the *Search* box at the top of the portal, begin typing *myVM1*. When **myVM1** appears in the search results, select it.
-2.  Create a remote desktop connection to the *myVm1* VM by selecting **Connect**.
+2.  Create a remote desktop connection to the *myVm1* VM by selecting **Connect**, then selecting **RDP**, then selecting the **Download RDP File** button.
 
 3.  To connect to the VM, open the downloaded RDP file. If prompted, select **Connect**.
 4.  Enter the user name and password you specified when creating the VM (you may need to select **More choices**, then **Use a different account**, to specify the credentials you entered when you created the VM), then select **OK**.
@@ -124,13 +125,13 @@ You can connect virtual networks to each other with virtual network peering. The
     
     Though ping is used to communicate between VMs in this tutorial, allowing ICMP through the Windows Firewall for production deployments is not recommended.
 
-7.  To connect to the *myVm2* VM, enter the following command from a command prompt on the *myVm1* VM:
+7.  To connect to the *myVm2* VM, enter the following command from a command prompt on the *myVm1* VM: *If prompted, enter the credentials. Being able to connect this verifies you can use the peering connection to myVM2 using RDP on the internal network.*
 
     ```cli
     mstsc /v:10.1.0.4
     ```
     
-8.  Since you enabled ping on *myVm1*, you can now ping it by IP address:
+8.  Since you enabled ping on *myVm1*, you can now ping it by IP address: *This verifies that the established peer is functioning as expected.*
 
     ```cli
     ping 10.0.0.4
@@ -139,9 +140,8 @@ You can connect virtual networks to each other with virtual network peering. The
 9.  Disconnect your RDP sessions to both *myVM1* and *myVM2*.
 
 
-10. Leave all resources running.  You will use them in a later lab.
+| WARNING: Prior to continuing you should remove all resources used for this lab.  To do this in the **Azure Portal** click **Resource groups**.  Select any resources groups you have created.  On the resource group blade click **Delete Resource group**, enter the Resource Group Name and click **Delete**.  Repeat the process for any additional Resource Groups you may have created. **Failure to do this may cause issues with other labs.** |
+| --- |
 
-
-
-**Results**: You have now completed this lab.
+**Results** : You have now completed this lab.
 
